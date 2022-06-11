@@ -6,6 +6,7 @@ import com.mycompany.mavenproject1.Object.SanPham;
 import com.mycompany.mavenproject1.Object.SuKien;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 public class KhoHangViews extends javax.swing.JFrame {
@@ -35,6 +36,8 @@ public class KhoHangViews extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jComboBox1 = new javax.swing.JComboBox<>();
         tieudekhohang = new javax.swing.JLabel();
         LabelTen = new javax.swing.JLabel();
         LabelGiaNhap = new javax.swing.JLabel();
@@ -50,6 +53,9 @@ public class KhoHangViews extends javax.swing.JFrame {
         TFTheLoai = new javax.swing.JTextField();
         BtnInsert = new javax.swing.JButton();
         BtnClear = new javax.swing.JButton();
+        BtnBack = new javax.swing.JButton();
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(778, 582));
@@ -116,6 +122,13 @@ public class KhoHangViews extends javax.swing.JFrame {
 
         BtnClear.setText("Clear");
 
+        BtnBack.setText("Back");
+        BtnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,11 +169,15 @@ public class KhoHangViews extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(BtnBack)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tieudekhohang)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -241,6 +258,14 @@ public class KhoHangViews extends javax.swing.JFrame {
 //        io.ghiSK(list_SuKien);
         
     }//GEN-LAST:event_BtnInsertActionPerformed
+
+    private void BtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackActionPerformed
+        // TODO add your handling code here:
+        JFrame MainViews = new MainViews();
+        this.setVisible(false);
+        MainViews.setVisible(true);
+        
+    }//GEN-LAST:event_BtnBackActionPerformed
     private void showResult() { 
         SanPham sp = list.get(list.size()-1);
         model.addRow(new Object[]{
@@ -259,6 +284,7 @@ public class KhoHangViews extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnBack;
     private javax.swing.JButton BtnClear;
     private javax.swing.JButton BtnInsert;
     private javax.swing.JLabel LabelGiaBan;
@@ -271,6 +297,8 @@ public class KhoHangViews extends javax.swing.JFrame {
     private javax.swing.JTextField TFSoLuongNhap;
     private javax.swing.JTextField TFTen;
     private javax.swing.JTextField TFTheLoai;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel tieudekhohang;

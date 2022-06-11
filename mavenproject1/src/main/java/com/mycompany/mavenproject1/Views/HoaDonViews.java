@@ -11,6 +11,7 @@ import com.mycompany.mavenproject1.Object.ThanhToan;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
+import javax.swing.JFrame;
 
 /**
  *
@@ -70,6 +71,7 @@ public class HoaDonViews extends javax.swing.JFrame {
         lbsoluong = new javax.swing.JLabel();
         BTNBotSPHD = new javax.swing.JButton();
         BtnXoaSPHD = new javax.swing.JButton();
+        BtnBack = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -134,6 +136,13 @@ public class HoaDonViews extends javax.swing.JFrame {
 
         BtnXoaSPHD.setText("Xóa");
 
+        BtnBack.setText("Back");
+        BtnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -160,11 +169,15 @@ public class HoaDonViews extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TFsoluongHD, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(88, 88, 88))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TFtenSanPhamHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TFsoluongHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,6 +263,13 @@ public class HoaDonViews extends javax.swing.JFrame {
 //        System.out.print(list_soluongsanpham.get(key));
         showResultHD();
     }//GEN-LAST:event_BTNBotSPHDActionPerformed
+
+    private void BtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackActionPerformed
+        // TODO add your handling code here:
+        JFrame MainViews = new MainViews();
+        this.setVisible(false);
+        MainViews.setVisible(true);
+    }//GEN-LAST:event_BtnBackActionPerformed
     
     
     private void showResultHD() {
@@ -281,6 +301,7 @@ public class HoaDonViews extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTNBotSPHD;
+    private javax.swing.JButton BtnBack;
     private javax.swing.JButton BtnThemSPHD;
     private javax.swing.JButton BtnXoaSPHD;
     private javax.swing.JTextArea TAHoaDon;

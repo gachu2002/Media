@@ -11,12 +11,17 @@ import javax.swing.JFrame;
  * @author Administrator
  */
 public class MainViews extends javax.swing.JFrame {
+//    public JFrame MainViews;
+//    public JFrame KhoHangViews;
+//    public JFrame HoaDonViews;
+//    public JFrame ChiPhiViews;
 
     /**
      * Creates new form MainViews
      */
     public MainViews() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
