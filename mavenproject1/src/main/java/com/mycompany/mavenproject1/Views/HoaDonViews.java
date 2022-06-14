@@ -32,11 +32,11 @@ public class HoaDonViews extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         list = IO.docSP();
-        list_SuKien = new ArrayList<> ();
+        list_SuKien = IO.docSK(list);
         list_tensanpham = new ArrayList<> ();
         list_soluongsanpham = new ArrayList<> ();
         list_giaban = new ArrayList<> ();
-//        list_SuKien = new ArrayList<> ();
+
         for (int i= 0; i< list.size();i++){
             list_tensanpham.add(list.get(i).getTensanpham());
             list_soluongsanpham.add(list.get(i).getSoluong());
@@ -72,6 +72,7 @@ public class HoaDonViews extends javax.swing.JFrame {
         BTNBotSPHD = new javax.swing.JButton();
         BtnXoaSPHD = new javax.swing.JButton();
         BtnBack = new javax.swing.JButton();
+        BtnIn = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -143,6 +144,13 @@ public class HoaDonViews extends javax.swing.JFrame {
             }
         });
 
+        BtnIn.setText("In");
+        BtnIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnInActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,13 +161,6 @@ public class HoaDonViews extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(BtnThemSPHD)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTNBotSPHD)
-                        .addGap(120, 120, 120)
-                        .addComponent(BtnXoaSPHD))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(lbtenSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -167,7 +168,16 @@ public class HoaDonViews extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                         .addComponent(lbsoluong, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TFsoluongHD, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TFsoluongHD, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(BtnThemSPHD)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BTNBotSPHD)
+                        .addGap(60, 60, 60)
+                        .addComponent(BtnIn)
+                        .addGap(54, 54, 54)
+                        .addComponent(BtnXoaSPHD)))
                 .addGap(88, 88, 88))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,7 +197,8 @@ public class HoaDonViews extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnThemSPHD)
                     .addComponent(BTNBotSPHD, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnXoaSPHD))
+                    .addComponent(BtnXoaSPHD)
+                    .addComponent(BtnIn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -270,6 +281,42 @@ public class HoaDonViews extends javax.swing.JFrame {
         this.setVisible(false);
         MainViews.setVisible(true);
     }//GEN-LAST:event_BtnBackActionPerformed
+
+    private void BtnInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInActionPerformed
+        // TODO add your handling code here:
+//        System.out.print(list_SuKien.size());
+        for (int i =0; i< list_tensanpham.size();i++){
+            SanPham sp = null;
+            for (int j = 0; j< list.size();j++){
+                if (list_tensanpham.get(i).equals(list.get(j).getTensanpham())){
+                   sp = list.get(j);
+                   break;
+                }
+            }
+            if(sp == null) return;
+            if(list_soluongsanpham.get(i)<sp.getSoluong()){
+               Date ngay = new Date();
+                SuKien sk = new SuKien(sp,ngay,"ban",sp.getSoluong()-list_soluongsanpham.get(i)); //// can mang su kien vi khi dung lenh xoa thi ta se ko co su kien nay
+                sk.isRealSK();
+                list_SuKien.add(sk); 
+            }
+            
+        }
+//        System.out.print(list_SuKien.size());
+        IO.ghiSP(list);
+        IO.ghiSK(list_SuKien);
+        list = IO.docSP();
+        list_SuKien = IO.docSK(list);
+        list_tensanpham = new ArrayList<> ();
+        list_soluongsanpham = new ArrayList<> ();
+        list_giaban = new ArrayList<> ();
+        for (int i= 0; i< list.size();i++){
+            list_tensanpham.add(list.get(i).getTensanpham());
+            list_soluongsanpham.add(list.get(i).getSoluong());
+            list_giaban.add(list.get(i).getGiaban());
+        }
+        HD = new ThanhToan();
+    }//GEN-LAST:event_BtnInActionPerformed
     
     
     private void showResultHD() {
@@ -302,6 +349,7 @@ public class HoaDonViews extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTNBotSPHD;
     private javax.swing.JButton BtnBack;
+    private javax.swing.JButton BtnIn;
     private javax.swing.JButton BtnThemSPHD;
     private javax.swing.JButton BtnXoaSPHD;
     private javax.swing.JTextArea TAHoaDon;
