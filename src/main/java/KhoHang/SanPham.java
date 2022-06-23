@@ -1,18 +1,14 @@
 package KhoHang;
 
-
 public class SanPham {
 
     public SanPham() {
     }
 
-    
     private String tensanpham;
-    private int gianhap,giaban;
-    public int soluong = 0 ;
+    private int gianhap, giaban;
+    public int soluong = 0;
 
-    
-    
     public String getTensanpham() {
         return tensanpham;
     }

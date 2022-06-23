@@ -1,4 +1,3 @@
-
 package View;
 
 import IO.IOSanPham;
@@ -14,13 +13,14 @@ import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 public class KhoHangViews extends javax.swing.JFrame {
-    
+
     private ArrayList<SanPham> list;
     private ArrayList<SuKien> list_SuKien;
     DefaultTableModel model;
-    int key =0;
-    
+    int key = 0;
+
     IOSanPham io = new IOSanPham();
+
     /**
      * Creates new form KhoHangViews
      */
@@ -29,24 +29,23 @@ public class KhoHangViews extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
         list = io.docSP(); //list = new ArrayList<> (); 
-        list_SuKien = new ArrayList<> ();
-        model = (DefaultTableModel)jTable1.getModel();
+        list_SuKien = new ArrayList<>();
+        model = (DefaultTableModel) jTable1.getModel();
 //        panelShow();
         TFTenTacGia.setVisible(true);
         TFNhaXuatBan.setVisible(true);
         TFTheLoaiSach.setVisible(true);
         TFNamPhatHanhSach.setVisible(true);
-        
+
         TFTenCaSi.setVisible(false);
         TFTheLoaiDN.setVisible(false);
         TFNamPhatHanhDN.setVisible(false);
-        
-        
+
         TFDaoDien.setVisible(false);
-        TFDienVien.setVisible(false);        
-        TFNamSanXuatDP.setVisible(false);        
+        TFDienVien.setVisible(false);
+        TFNamSanXuatDP.setVisible(false);
         TFTheLoaiDP.setVisible(false);
-        
+
     }
 //    private void panelShow(){
 //        if (RBtnSach.isSelected()){
@@ -420,58 +419,56 @@ public class KhoHangViews extends javax.swing.JFrame {
     private void BtnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInsertActionPerformed
         // TODO add your handling code here:
 
-        SanPham sp =null;
-        for (int i =0; i <list.size();i++){
-            if(list.get(i).getTensanpham().equals(TFTen.getText())){
+        SanPham sp = null;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getTensanpham().equals(TFTen.getText())) {
                 sp = list.get(i);
 //              list.add(sp);
                 key = 1;
                 break;
             }
         }
-        if (key ==0){
+        if (key == 0) {
 //            sp = new SanPham(TFTen.getText(),Integer. parseInt(TFGiaNhap.getText()),Integer. parseInt(TFGiaBan.getText()));
-            if(RBtnSach.isSelected()){
+            if (RBtnSach.isSelected()) {
                 sp = new Sach();
                 sp.setTensanpham(TFTen.getText());
-                sp.setGianhap(Integer. parseInt(TFGiaNhap.getText()));
-                sp.setGiaban(Integer. parseInt(TFGiaBan.getText()));
-                ((Sach)sp).setTentacgia(TFTenTacGia.getText());
-                ((Sach)sp).setNhaxuatban(TFNhaXuatBan.getText());
-                ((Sach)sp).setTheloai(TFTheLoaiSach.getText());
-                ((Sach)sp).setNamphathanh(Integer. parseInt(TFNamPhatHanhSach.getText()));               
-            }
-            else if (RBtnDiaNhac.isSelected()){
+                sp.setGianhap(Integer.parseInt(TFGiaNhap.getText()));
+                sp.setGiaban(Integer.parseInt(TFGiaBan.getText()));
+                ((Sach) sp).setTentacgia(TFTenTacGia.getText());
+                ((Sach) sp).setNhaxuatban(TFNhaXuatBan.getText());
+                ((Sach) sp).setTheloai(TFTheLoaiSach.getText());
+                ((Sach) sp).setNamphathanh(Integer.parseInt(TFNamPhatHanhSach.getText()));
+            } else if (RBtnDiaNhac.isSelected()) {
                 sp = new DiaNhac();
                 sp.setTensanpham(TFTen.getText());
-                sp.setGianhap(Integer. parseInt(TFGiaNhap.getText()));
-                sp.setGiaban(Integer. parseInt(TFGiaBan.getText()));
-                ((DiaNhac)sp).setTencasi(TFTenCaSi.getText());
-                ((DiaNhac)sp).setTheloai(TFTheLoaiDN.getText());
-                ((DiaNhac)sp).setNamphathanh(Integer. parseInt(TFNamPhatHanhDN.getText()));
-            }
-            else if (RBtnDiaPhim.isSelected()){
+                sp.setGianhap(Integer.parseInt(TFGiaNhap.getText()));
+                sp.setGiaban(Integer.parseInt(TFGiaBan.getText()));
+                ((DiaNhac) sp).setTencasi(TFTenCaSi.getText());
+                ((DiaNhac) sp).setTheloai(TFTheLoaiDN.getText());
+                ((DiaNhac) sp).setNamphathanh(Integer.parseInt(TFNamPhatHanhDN.getText()));
+            } else if (RBtnDiaPhim.isSelected()) {
                 sp = new DiaPhim();
                 sp.setTensanpham(TFTen.getText());
-                sp.setGianhap(Integer. parseInt(TFGiaNhap.getText()));
-                sp.setGiaban(Integer. parseInt(TFGiaBan.getText()));
-                ((DiaPhim)sp).setDaodien(TFDaoDien.getText());
-                ((DiaPhim)sp).setDienvien(TFDienVien.getText());
-                ((DiaPhim)sp).setTheloai(TFTheLoaiDP.getText());
-                ((DiaPhim)sp).setNamsanxuat(Integer. parseInt(TFNamSanXuatDP.getText())); 
+                sp.setGianhap(Integer.parseInt(TFGiaNhap.getText()));
+                sp.setGiaban(Integer.parseInt(TFGiaBan.getText()));
+                ((DiaPhim) sp).setDaodien(TFDaoDien.getText());
+                ((DiaPhim) sp).setDienvien(TFDienVien.getText());
+                ((DiaPhim) sp).setTheloai(TFTheLoaiDP.getText());
+                ((DiaPhim) sp).setNamsanxuat(Integer.parseInt(TFNamSanXuatDP.getText()));
             }
             list.add(sp);
             System.out.print(list);
         }
-        key =0;
+        key = 0;
         Date ngay = new Date();
-        SuKien sk = new SuKien(sp,ngay,"mua",Integer. parseInt(TFSoLuongNhap.getText()));
+        SuKien sk = new SuKien(sp, ngay, "mua", Integer.parseInt(TFSoLuongNhap.getText()));
         sk.isRealSK();
         list_SuKien.add(sk);
         showResult(); /// Bảng hiện thêm hàng do hàm showResult này còn danh sách list vẫn chỉ có các sản phẩm ko cùng tên
         io.ghiSP(list);
         io.ghiSK(list_SuKien);
-        
+
     }//GEN-LAST:event_BtnInsertActionPerformed
 
     private void BtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackActionPerformed
@@ -479,7 +476,7 @@ public class KhoHangViews extends javax.swing.JFrame {
         JFrame MainViews = new MainViews();
         this.setVisible(false);
         MainViews.setVisible(true);
-        
+
     }//GEN-LAST:event_BtnBackActionPerformed
 
     private void RBtnSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBtnSachActionPerformed
@@ -492,18 +489,17 @@ public class KhoHangViews extends javax.swing.JFrame {
         TFNhaXuatBan.setVisible(true);
         TFTheLoaiSach.setVisible(true);
         TFNamPhatHanhSach.setVisible(true);
-        
+
         TFTenCaSi.setVisible(false);
         TFTheLoaiDN.setVisible(false);
         TFNamPhatHanhDN.setVisible(false);
-        
-        
+
         TFDaoDien.setVisible(false);
         TFDienVien.setVisible(false);
-        TFTheLoaiDP.setVisible(false);        
-        TFNamSanXuatDP.setVisible(false);        
-        
-        
+        TFTheLoaiDP.setVisible(false);
+        TFNamSanXuatDP.setVisible(false);
+
+
     }//GEN-LAST:event_RBtnSachActionPerformed
 
     private void RBtnDiaNhacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBtnDiaNhacActionPerformed
@@ -517,15 +513,14 @@ public class KhoHangViews extends javax.swing.JFrame {
         TFNhaXuatBan.setVisible(false);
         TFTheLoaiSach.setVisible(false);
         TFNamPhatHanhSach.setVisible(false);
-        
+
         TFTenCaSi.setVisible(true);
         TFTheLoaiDN.setVisible(true);
         TFNamPhatHanhDN.setVisible(true);
-        
-        
+
         TFDaoDien.setVisible(false);
-        TFDienVien.setVisible(false);        
-        TFNamSanXuatDP.setVisible(false);        
+        TFDienVien.setVisible(false);
+        TFNamSanXuatDP.setVisible(false);
         TFTheLoaiDP.setVisible(false);
     }//GEN-LAST:event_RBtnDiaNhacActionPerformed
 
@@ -540,15 +535,14 @@ public class KhoHangViews extends javax.swing.JFrame {
         TFNhaXuatBan.setVisible(false);
         TFTheLoaiSach.setVisible(false);
         TFNamPhatHanhSach.setVisible(false);
-        
+
         TFTenCaSi.setVisible(false);
         TFTheLoaiDN.setVisible(false);
         TFNamPhatHanhDN.setVisible(false);
-        
-        
+
         TFDaoDien.setVisible(true);
-        TFDienVien.setVisible(true);        
-        TFNamSanXuatDP.setVisible(true);        
+        TFDienVien.setVisible(true);
+        TFNamSanXuatDP.setVisible(true);
         TFTheLoaiDP.setVisible(true);
     }//GEN-LAST:event_RBtnDiaPhimActionPerformed
 
@@ -569,16 +563,15 @@ public class KhoHangViews extends javax.swing.JFrame {
         model.setRowCount(0);
         showResult();
     }//GEN-LAST:event_BtnFullActionPerformed
-    
-    
-    
-    private void showResult() { 
-//        SanPham sp = list.get(list.size()-1);
-        for (int i = 0; i<list.size();i++ ){
-            
+
+    private void showResult() {
+//        SanPham sp = list.get(list.size()-1);         
+
+        model.setRowCount(0);
+        for (int i = 0; i < list.size(); i++) {
             SanPham sp = list.get(i);
             model.addRow(new Object[]{
-                sp.getTensanpham(), sp.getGianhap(),sp.getGiaban(),sp.soluong,sp.getClass().getName()
+                sp.getTensanpham(), sp.getGianhap(), sp.getGiaban(), sp.soluong, sp.getClass().getName()
             });
         }
 //        model.addRow(new Object[]{
@@ -586,7 +579,6 @@ public class KhoHangViews extends javax.swing.JFrame {
 //        });        
     }
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBack;
@@ -624,5 +616,4 @@ public class KhoHangViews extends javax.swing.JFrame {
     private javax.swing.JLabel tieudekhohang;
     // End of variables declaration//GEN-END:variables
 
-    
 }
