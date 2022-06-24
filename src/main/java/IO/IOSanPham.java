@@ -54,10 +54,6 @@ public class IOSanPham {
                     pw.println(((DiaNhac) sp).getTheloai());
                     pw.println(((DiaNhac) sp).getNamphathanh());
                 }
-//                pw.println(sp.getTensanpham());
-//                pw.println(sp.getGianhap());
-//                pw.println(sp.getGiaban());
-//                pw.println(sp.getSoluong());
             }
         } catch (Exception e) {
             System.out.println("got an exception!");
@@ -69,46 +65,45 @@ public class IOSanPham {
         try ( Scanner sc = new Scanner(new File("src\\main\\java\\IO\\SP.DAT"))) {
             while (sc.hasNext()) {
                 int number = Integer.parseInt(sc.nextLine());
-                if (number == 0) {
-                    Sach sp = new Sach();
-                    sp.setTensanpham(sc.nextLine());
-                    sp.setGianhap(Integer.parseInt(sc.nextLine()));
-                    sp.setGiaban(Integer.parseInt(sc.nextLine()));
-                    sp.soluong = Integer.parseInt(sc.nextLine());
-                    sp.setTentacgia(sc.nextLine());
-                    sp.setNhaxuatban(sc.nextLine());
-                    sp.setTheloai(sc.nextLine());
-                    sp.setNamphathanh(Integer.parseInt(sc.nextLine()));
-                    list.add(sp);
-                } else if (number == 1) {
-                    DiaPhim sp = new DiaPhim();
-                    sp.setTensanpham(sc.nextLine());
-                    sp.setGianhap(Integer.parseInt(sc.nextLine()));
-                    sp.setGiaban(Integer.parseInt(sc.nextLine()));
-                    sp.soluong = Integer.parseInt(sc.nextLine());
-                    sp.setDaodien(sc.nextLine());
-                    sp.setDienvien(sc.nextLine());
-                    sp.setTheloai(sc.nextLine());
-                    sp.setNamsanxuat(Integer.parseInt(sc.nextLine()));
-                    list.add(sp);
-                } else if (number == 2) {
-                    DiaNhac sp = new DiaNhac();
-                    sp.setTensanpham(sc.nextLine());
-                    sp.setGianhap(Integer.parseInt(sc.nextLine()));
-                    sp.setGiaban(Integer.parseInt(sc.nextLine()));
-                    sp.soluong = Integer.parseInt(sc.nextLine());
-                    sp.setTencasi(sc.nextLine());
-                    sp.setTheloai(sc.nextLine());
-                    sp.setNamphathanh(Integer.parseInt(sc.nextLine()));
-                    list.add(sp);
+                switch (number) {
+                    case 0 -> {
+                        Sach sp = new Sach();
+                        sp.setTensanpham(sc.nextLine());
+                        sp.setGianhap(Integer.parseInt(sc.nextLine()));
+                        sp.setGiaban(Integer.parseInt(sc.nextLine()));
+                        sp.soluong = Integer.parseInt(sc.nextLine());
+                        sp.setTentacgia(sc.nextLine());
+                        sp.setNhaxuatban(sc.nextLine());
+                        sp.setTheloai(sc.nextLine());
+                        sp.setNamphathanh(Integer.parseInt(sc.nextLine()));
+                        list.add(sp);
+                    }
+                    case 1 -> {
+                        DiaPhim sp = new DiaPhim();
+                        sp.setTensanpham(sc.nextLine());
+                        sp.setGianhap(Integer.parseInt(sc.nextLine()));
+                        sp.setGiaban(Integer.parseInt(sc.nextLine()));
+                        sp.soluong = Integer.parseInt(sc.nextLine());
+                        sp.setDaodien(sc.nextLine());
+                        sp.setDienvien(sc.nextLine());
+                        sp.setTheloai(sc.nextLine());
+                        sp.setNamsanxuat(Integer.parseInt(sc.nextLine()));
+                        list.add(sp);
+                    }
+                    case 2 -> {
+                        DiaNhac sp = new DiaNhac();
+                        sp.setTensanpham(sc.nextLine());
+                        sp.setGianhap(Integer.parseInt(sc.nextLine()));
+                        sp.setGiaban(Integer.parseInt(sc.nextLine()));
+                        sp.soluong = Integer.parseInt(sc.nextLine());
+                        sp.setTencasi(sc.nextLine());
+                        sp.setTheloai(sc.nextLine());
+                        sp.setNamphathanh(Integer.parseInt(sc.nextLine()));
+                        list.add(sp);
+                    }
+                    default -> {
+                    }
                 }
-//                SanPham Sp = new SanPham();
-//                Sp.setTensanpham(sc.nextLine());
-//                Sp.setGianhap(Integer.parseInt(sc.nextLine()));
-//                Sp.setGiaban(Integer.parseInt(sc.nextLine()));
-//                Sp.soluong = Integer.parseInt(sc.nextLine());
-//                
-//                list.add(sp);
             }
         } catch (Exception e) {
             System.out.println("got an exception");
@@ -120,9 +115,6 @@ public class IOSanPham {
         try ( PrintWriter pw = new PrintWriter(new File("src\\main\\java\\IO\\SK.DAT"))) {
             for (SuKien sk : list) {
                 pw.println(sk.getSp().getTensanpham());
-//                pw.println(sk.getSp().getGianhap());
-//                pw.println(sk.getSp().getGiaban());
-//                pw.println(sk.getSp().getSoluong());
                 pw.println(sk.getNgay());
                 pw.println(sk.getHanhdong());
                 pw.println(sk.getSoluong_hd());
@@ -146,10 +138,6 @@ public class IOSanPham {
                         break;
                     }
                 }
-//                sp.setTensanpham(sc.nextLine());
-//                sp.setGianhap(Integer.parseInt(sc.nextLine()));
-//                sp.setGiaban(Integer.parseInt(sc.nextLine()));
-//                sp.soluong = Integer.parseInt(sc.nextLine());
                 sk.setSp(sp);
 
                 Date ngay = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US).parse(sc.nextLine());
@@ -195,18 +183,14 @@ public class IOSanPham {
                 if (number == 0) {
                     NhanVienCoDinh nv = new NhanVienCoDinh();
                     nv.setTenNhanVien(sc.nextLine());
-//                    System.out.println(nv.getTenNhanVien());
                     nv.setViTri(sc.nextLine());
-//                    System.out.println(nv.getViTri());
                     nv.setLuongCoBan(Double.parseDouble(sc.nextLine()));
                     nv.setHeSoLuong(Double.parseDouble(sc.nextLine()));
                     list.add(nv);
                 } else if (number == 1) {
                     NVPastTime nv = new NVPastTime();
                     nv.setTenNhanVien(sc.nextLine());
-//                    System.out.println(nv.getTenNhanVien());
                     nv.setThoiGianLamViec(Double.parseDouble(sc.nextLine()));
-//                    System.out.println(nv.getThoiGianLamViec());
                     nv.setLuongTheoGio(Double.parseDouble(sc.nextLine()));
                     list.add(nv);
                 }

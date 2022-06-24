@@ -85,41 +85,40 @@
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="TFTenTacGia" min="-2" pref="71" max="-2" attributes="0"/>
-                                              <Component id="TFNhaXuatBan" min="-2" pref="71" max="-2" attributes="0"/>
                                               <Group type="102" attributes="0">
                                                   <Component id="LabelTheLoai" min="-2" pref="58" max="-2" attributes="0"/>
-                                                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                                                  <EmptySpace pref="40" max="32767" attributes="0"/>
                                                   <Component id="RBtnSach" min="-2" pref="50" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="TFNamPhatHanhSach" alignment="1" pref="0" max="32767" attributes="0"/>
-                                                  <Component id="TFTheLoaiSach" alignment="1" pref="71" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="TFNamPhatHanhSach" alignment="1" max="32767" attributes="0"/>
+                                                      <Component id="TFTheLoaiSach" alignment="1" max="32767" attributes="0"/>
+                                                      <Component id="TFNhaXuatBan" alignment="1" max="32767" attributes="0"/>
+                                                      <Component id="TFTenTacGia" alignment="1" max="32767" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="TFTheLoaiDN" min="-2" pref="71" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="TFDienVien" min="-2" pref="71" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Group type="102" attributes="0">
                                                   <Component id="RBtnDiaNhac" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Component id="RBtnDiaPhim" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="TFTenCaSi" min="-2" pref="71" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="TFDaoDien" min="-2" pref="71" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="TFNamPhatHanhDN" min="-2" pref="71" max="-2" attributes="0"/>
-                                                  <EmptySpace min="12" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="TFTheLoaiDP" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
-                                                      <Component id="TFNamSanXuatDP" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
+                                                      <Component id="TFNamPhatHanhDN" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="TFTheLoaiDN" max="32767" attributes="0"/>
+                                                      <Component id="TFTenCaSi" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="TFDaoDien" max="32767" attributes="0"/>
+                                                      <Component id="TFDienVien" max="32767" attributes="0"/>
+                                                      <Component id="TFNamSanXuatDP" max="32767" attributes="0"/>
+                                                      <Component id="TFTheLoaiDP" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -133,10 +132,10 @@
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="452" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="506" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="213" max="32767" attributes="0"/>
+              <EmptySpace pref="117" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -351,7 +350,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="BtnGrLoai"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="DiaPhim"/>
+        <Property name="text" type="java.lang.String" value="&#x110;&#x129;a phim"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RBtnDiaPhimActionPerformed"/>
@@ -374,7 +373,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="BtnGrLoai"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="DiaNhac"/>
+        <Property name="text" type="java.lang.String" value="&#x110;&#x129;a nh&#x1ea1;c"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RBtnDiaNhacActionPerformed"/>
@@ -385,7 +384,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="314" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -397,7 +396,7 @@
     </Container>
     <Component class="javax.swing.JTextField" name="TFTenTacGia">
       <Properties>
-        <Property name="text" type="java.lang.String" value="T&#xea;nT&#xe1;cGi&#x1ea3;"/>
+        <Property name="text" type="java.lang.String" value="T&#xe1;c gi&#x1ea3;"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TFTenTacGiaActionPerformed"/>
@@ -405,12 +404,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="TFNhaXuatBan">
       <Properties>
-        <Property name="text" type="java.lang.String" value="NhaXuatBan"/>
+        <Property name="text" type="java.lang.String" value="Nh&#xe0; xu&#x1ea5;t b&#x1ea3;n"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TFTenCaSi">
       <Properties>
-        <Property name="text" type="java.lang.String" value="T&#xea;n Ca S&#x129;"/>
+        <Property name="text" type="java.lang.String" value="Ca s&#x129;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TFTheLoaiDN">
@@ -438,7 +437,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="TFNamPhatHanhDN">
       <Properties>
-        <Property name="text" type="java.lang.String" value="NamPhatHanh"/>
+        <Property name="text" type="java.lang.String" value="N&#x103;m ph&#xe1;t h&#xe0;nh"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TFTheLoaiDP">
@@ -448,12 +447,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="TFNamPhatHanhSach">
       <Properties>
-        <Property name="text" type="java.lang.String" value="NamPhatHanh"/>
+        <Property name="text" type="java.lang.String" value="N&#x103;m ph&#xe1;t h&#xe0;nh"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TFNamSanXuatDP">
       <Properties>
-        <Property name="text" type="java.lang.String" value="NamSanXuat"/>
+        <Property name="text" type="java.lang.String" value="N&#x103;m s&#x1ea3;n xu&#x1ea5;t"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="BtnFull">
