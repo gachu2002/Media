@@ -120,7 +120,7 @@
               <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <Component id="BtnBack" min="-2" pref="57" max="-2" attributes="0"/>
+              <Component id="BtnBack" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -179,12 +179,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbtenSanPham">
       <Properties>
-        <Property name="text" type="java.lang.String" value="t&#xea;n s&#x1ea3;n ph&#x1ea9;m"/>
+        <Property name="text" type="java.lang.String" value="T&#xea;n s&#x1ea3;n ph&#x1ea9;m"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbsoluong">
       <Properties>
-        <Property name="text" type="java.lang.String" value="s&#x1ed1; l&#x1b0;&#x1ee3;ng"/>
+        <Property name="text" type="java.lang.String" value="S&#x1ed1; l&#x1b0;&#x1ee3;ng"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="BTNBotSPHD">

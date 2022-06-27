@@ -95,8 +95,12 @@ public class HoaDon {
         return this.danhSachSanPham;
     }
 
-    public ArrayList<Integer> getSoLuongSanPham() {
+    public ArrayList<Integer> getDanhSachSoLuong() {
         return this.danhSachSoLuong;
+    }
+    
+    public ArrayList<Double> getDanhSachGia(){
+        return this.danhSachGia;
     }
 
     public void inHoaDon() {

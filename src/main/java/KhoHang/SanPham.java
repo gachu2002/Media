@@ -7,7 +7,7 @@ public class SanPham {
 
     private String tensanpham;
     private int gianhap, giaban;
-    public int soluong = 0;
+    private int soluong = 0;
 
     public String getTensanpham() {
         return tensanpham;
@@ -35,6 +35,10 @@ public class SanPham {
 
     public int getSoluong() {
         return soluong;
+    }
+    
+    public void setSoLuong(int soLuongMoi){
+        this.soluong = soLuongMoi;
     }
 
     public String getTheloai() {

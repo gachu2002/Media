@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 public class MainViews extends javax.swing.JFrame {
 //    public JFrame MainViews;
 //    public JFrame KhoHangViews;
-//    public JFrame HoaDonViews;
+//    public JFrame ThanhToanView;
 //    public JFrame ChiPhiViews;
 
     /**
@@ -120,7 +120,7 @@ public class MainViews extends javax.swing.JFrame {
 
     private void BtnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHoaDonActionPerformed
         // TODO add your handling code here:
-        JFrame HoaDonViews = new HoaDonViews();
+        JFrame HoaDonViews = new ThanhToanView();
         HoaDonViews.setVisible(true);
         this.setVisible(false);
         //MainViews.setVisible(false);

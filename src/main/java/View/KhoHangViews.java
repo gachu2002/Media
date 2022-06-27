@@ -1,6 +1,6 @@
 package View;
 
-import IO.IOSanPham;
+import IO.IO;
 import KhoHang.DiaNhac;
 import KhoHang.DiaPhim;
 import KhoHang.Sach;
@@ -19,7 +19,7 @@ public class KhoHangViews extends javax.swing.JFrame {
     DefaultTableModel model;
     int key = 0;
 
-    IOSanPham io = new IOSanPham();
+    IO io = new IO();
 
     /**
      * Creates new form KhoHangViews
@@ -542,7 +542,7 @@ public class KhoHangViews extends javax.swing.JFrame {
         for (int i = 0; i < listSanPham.size(); i++) {
             SanPham sp = listSanPham.get(i);
             model.addRow(new Object[]{
-                sp.getTensanpham(), sp.getGianhap(), sp.getGiaban(), sp.soluong, sp.getTheloai()
+                sp.getTensanpham(), sp.getGianhap(), sp.getGiaban(), sp.getSoluong(), sp.getTheloai()
             });
         }
     }

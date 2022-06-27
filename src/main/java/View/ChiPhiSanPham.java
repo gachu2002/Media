@@ -4,7 +4,7 @@
  */
 package View;
 
-import IO.IOSanPham;
+import IO.IO;
 import KhoHang.SanPham;
 import DoanhThu.SuKien;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ChiPhiSanPham extends javax.swing.JPanel {
 
-    IOSanPham io = new IOSanPham();
+    IO io = new IO();
     private ArrayList<SanPham> list;
     private ArrayList<SuKien> list_SuKien;
     DefaultTableModel model;

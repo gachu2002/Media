@@ -1,6 +1,6 @@
 package View;
 
-import IO.IOSanPham;
+import IO.IO;
 import NhanVien.NVPartTime;
 import NhanVien.NhanVien;
 import NhanVien.NhanVienCoDinh;
@@ -14,7 +14,7 @@ public class ChiPhiNhanVien extends javax.swing.JPanel {
 
     DefaultTableModel model;
     int key = 0;
-    IOSanPham io = new IOSanPham();
+    IO io = new IO();
 
     public ChiPhiNhanVien() {
         initComponents();

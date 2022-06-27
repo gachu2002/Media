@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class IOSanPham {
+public class IO {
 
     public void ghiSP(ArrayList<SanPham> list) {
         try ( PrintWriter pw = new PrintWriter(new File("src\\main\\java\\IO\\SP.DAT"))) {
@@ -71,7 +71,7 @@ public class IOSanPham {
                         sp.setTensanpham(sc.nextLine());
                         sp.setGianhap(Integer.parseInt(sc.nextLine()));
                         sp.setGiaban(Integer.parseInt(sc.nextLine()));
-                        sp.soluong = Integer.parseInt(sc.nextLine());
+                        sp.setSoLuong(Integer.parseInt(sc.nextLine()));
                         sp.setTentacgia(sc.nextLine());
                         sp.setNhaxuatban(sc.nextLine());
                         sp.setTheloai(sc.nextLine());
@@ -83,7 +83,7 @@ public class IOSanPham {
                         sp.setTensanpham(sc.nextLine());
                         sp.setGianhap(Integer.parseInt(sc.nextLine()));
                         sp.setGiaban(Integer.parseInt(sc.nextLine()));
-                        sp.soluong = Integer.parseInt(sc.nextLine());
+                        sp.setSoLuong(Integer.parseInt(sc.nextLine()));
                         sp.setDaodien(sc.nextLine());
                         sp.setDienvien(sc.nextLine());
                         sp.setTheloai(sc.nextLine());
@@ -95,7 +95,7 @@ public class IOSanPham {
                         sp.setTensanpham(sc.nextLine());
                         sp.setGianhap(Integer.parseInt(sc.nextLine()));
                         sp.setGiaban(Integer.parseInt(sc.nextLine()));
-                        sp.soluong = Integer.parseInt(sc.nextLine());
+                        sp.setSoLuong(Integer.parseInt(sc.nextLine()));
                         sp.setTencasi(sc.nextLine());
                         sp.setTheloai(sc.nextLine());
                         sp.setNamphathanh(Integer.parseInt(sc.nextLine()));
