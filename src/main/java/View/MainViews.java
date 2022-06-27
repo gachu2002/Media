@@ -130,7 +130,7 @@ public class MainViews extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnChiPhi;
     private javax.swing.JButton BtnHoaDon;

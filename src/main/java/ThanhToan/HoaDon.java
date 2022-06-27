@@ -8,32 +8,33 @@ package ThanhToan;
  *
  * @author minhd
  */
-import java.util.Vector;
+import java.util.ArrayList;
 import java.time.LocalDateTime;
-import java.lang.Math;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
-public class ThanhToan {
+public class HoaDon {
+
     private int day;
     private int month;
     private int year;
-    private double tongSoTien;
-    private Vector<String> danhSachSanPham;
-    private  Vector<Integer> danhSachSoLuong;
+    private ArrayList<String> danhSachSanPham;
+    private ArrayList<Integer> danhSachSoLuong;
+    private ArrayList<Double> danhSachGia;
 
-    public ThanhToan() {
+    public HoaDon() {
         LocalDateTime thoiDiemHienTai = LocalDateTime.now();
         this.day = thoiDiemHienTai.getDayOfMonth();
         this.month = thoiDiemHienTai.getMonthValue();
         this.year = thoiDiemHienTai.getYear();
-        this.tongSoTien = 0;
-        this.danhSachSanPham = new Vector<String>();
-        this.danhSachSoLuong = new Vector<Integer>();
+        this.danhSachSanPham = new ArrayList<>();
+        this.danhSachSoLuong = new ArrayList<>();
+        this.danhSachGia = new ArrayList<>();
     }
 
     public void themSanPham(String sanPham, int soLuong, double gia) {
-        this.tongSoTien += gia * soLuong;
         for (Integer i = 0; i < danhSachSanPham.size(); ++i) {
-            if (this.danhSachSanPham.get(i) == sanPham) {
+            if (this.danhSachSanPham.get(i).equals(sanPham)) {
                 int soLuongHienTai = danhSachSoLuong.get(i);
                 this.danhSachSoLuong.set(i, soLuongHienTai + soLuong);
                 return;
@@ -41,6 +42,7 @@ public class ThanhToan {
         }
         this.danhSachSanPham.add(sanPham);
         this.danhSachSoLuong.add(soLuong);
+        this.danhSachGia.add(gia);
     }
 
     public void themSanPham(String sanPham, double gia) {
@@ -48,7 +50,11 @@ public class ThanhToan {
     }
 
     public double tongHoaDon() {
-        return this.tongSoTien;
+        Double tongHoaDon = 0D;
+        for (int i = 0; i < danhSachSanPham.size(); ++i) {
+            tongHoaDon += danhSachSoLuong.get(i) * danhSachGia.get(i);
+        }
+        return tongHoaDon;
     }
 
     public void botSanPham(String sanPham, int soLuong, double gia) {
@@ -56,35 +62,40 @@ public class ThanhToan {
             if (this.danhSachSanPham.get(i).equals(sanPham)) {
                 int soLuongHienTai = danhSachSoLuong.get(i);
                 soLuong = Math.min(soLuong, soLuongHienTai);
-                this.tongSoTien -= soLuong * gia;
                 if (soLuong == soLuongHienTai) {
                     this.danhSachSanPham.remove(i.intValue());
                     this.danhSachSoLuong.remove(i.intValue());
+                    this.danhSachGia.remove(i.intValue());
                 } else {
                     this.danhSachSoLuong.set(i, soLuongHienTai - soLuong);
                 }
                 return;
             }
         }
+        JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+        JOptionPane.showMessageDialog(frame,
+                "Sản phẩm chưa được thêm trong hóa đơn!",
+                "",
+                JOptionPane.ERROR_MESSAGE);
     }
 
     public void xoaSanPham(String sanPham, double gia) {
         // xoa tat ca san pham
         for (Integer i = 0; i < danhSachSanPham.size(); ++i) {
-            if (this.danhSachSanPham.get(i) == sanPham) {
-                this.tongSoTien -= this.danhSachSoLuong.get(i) * gia;
+            if (this.danhSachSanPham.get(i).equals(sanPham)) {
                 this.danhSachSanPham.remove(i.intValue());
                 this.danhSachSoLuong.remove(i.intValue());
+                this.danhSachGia.remove(i.intValue());
                 return;
             }
         }
     }
 
-    public Vector<String> getDanhSachSanPham(){
+    public ArrayList<String> getDanhSachSanPham() {
         return this.danhSachSanPham;
     }
 
-    public Vector<Integer> getSoLuongSanPham(){
+    public ArrayList<Integer> getSoLuongSanPham() {
         return this.danhSachSoLuong;
     }
 
@@ -95,10 +106,10 @@ public class ThanhToan {
             System.out.println((i + 1) + ". " + this.danhSachSanPham.get(i) + "*" + this.danhSachSoLuong.get(i));
         }
         System.out.println("-----------------------------------");
-        System.out.println("Tong gia tri hoa don: " + this.tongSoTien);
+        System.out.println("Tong gia tri hoa don: " + this.tongHoaDon());
     }
 
-    public String ngayThanhToan(){
+    public String ngayThanhToan() {
         return this.day + "/" + this.month + "/" + this.year;
     }
 
@@ -125,12 +136,4 @@ public class ThanhToan {
     public void setYear(int year) {
         this.year = year;
     }
-
-    // public int getM(){
-    // return int(this.time.getMonth());
-    // }
-
-    // public void luuSuKien(){
-    // suKien.add(this);
-    // }
 }

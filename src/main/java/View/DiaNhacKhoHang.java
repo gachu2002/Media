@@ -108,7 +108,7 @@ public class DiaNhacKhoHang extends javax.swing.JPanel {
 
     private void BtnInsertDNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInsertDNActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_BtnInsertDNActionPerformed
 
 

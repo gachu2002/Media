@@ -1,50 +1,42 @@
-
 package View;
 
 import IO.IOSanPham;
-import NhanVien.NVPastTime;
+import NhanVien.NVPartTime;
 import NhanVien.NhanVien;
 import NhanVien.NhanVienCoDinh;
-import KhoHang.SanPham;
-import DoanhThu.SuKien;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-
-
-
 public class ChiPhiNhanVien extends javax.swing.JPanel {
 //    private ArrayList<SanPham> list;
+
     private ArrayList<NhanVien> list_NhanVien;
 
     DefaultTableModel model;
-    int key =0;
+    int key = 0;
     IOSanPham io = new IOSanPham();
 
-    
-    
     public ChiPhiNhanVien() {
         initComponents();
 //        list = new ArrayList<> (); // list = io.docSP();
-        list_NhanVien = new ArrayList<> ();
-        model = (DefaultTableModel)jTable1.getModel();
+        list_NhanVien = new ArrayList<>();
+        model = (DefaultTableModel) jTable1.getModel();
         list_NhanVien = io.docNV();
 //        System.out.println(list_NhanVien.size());
         showResultCPNV();
     }
 
-    private void showResultCPNV() { 
-        
-        for (int i =0 ; i< list_NhanVien.size();i++){
+    private void showResultCPNV() {
+
+        for (int i = 0; i < list_NhanVien.size(); i++) {
             NhanVien nv = list_NhanVien.get(i);
             model.addRow(new Object[]{
-            nv.getTenNhanVien(), 0,nv.tinhLuong()
-        });
+                nv.getTenNhanVien(), 0, nv.tinhLuong()
+            });
         }
-                
+
     }
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -126,10 +118,10 @@ public class ChiPhiNhanVien extends javax.swing.JPanel {
 
     private void BtnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTimKiemActionPerformed
         // TODO add your handling code here:
-        NhanVien nv =null;
-        
-        for (int i =0; i <list_NhanVien.size();i++){
-            if(list_NhanVien.get(i).getTenNhanVien().equals(TFtenNhanVien.getText())){
+        NhanVien nv = null;
+
+        for (int i = 0; i < list_NhanVien.size(); i++) {
+            if (list_NhanVien.get(i).getTenNhanVien().equals(TFtenNhanVien.getText())) {
                 nv = list_NhanVien.get(i);
 //              list.add(sp);
                 showResultTKNV(nv);
@@ -144,20 +136,19 @@ public class ChiPhiNhanVien extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnClearActionPerformed
     private void showResultTKNV(NhanVien nv) {
         String text = "";
-        if(nv instanceof NhanVienCoDinh){
-            
+        if (nv instanceof NhanVienCoDinh) {
+
             text += "Nhan vien co dinh:\n";
-            text += "Ho va ten: "+ ((NhanVienCoDinh)nv).getTenNhanVien()+ "\n";
-            text += "Vi tri: "+ ((NhanVienCoDinh)nv).getViTri() + "\n";
-            text += "Luong: "+ ((NhanVienCoDinh)nv).tinhLuong() +"\n";
-        }
-        else if (nv instanceof NVPastTime){
+            text += "Ho va ten: " + ((NhanVienCoDinh) nv).getTenNhanVien() + "\n";
+            text += "Vi tri: " + ((NhanVienCoDinh) nv).getViTri() + "\n";
+            text += "Luong: " + ((NhanVienCoDinh) nv).tinhLuong() + "\n";
+        } else if (nv instanceof NVPartTime) {
             text += "Nhan vien Past-Time:\n";
-            text += "Ho va ten: "+ ((NVPastTime)nv).getTenNhanVien()+ "\n";
-            text += "Vi tri: "+ ((NVPastTime)nv).getThoiGianLamViec() + "\n";
-            text += "Luong: "+ ((NVPastTime)nv).tinhLuong() +"\n";
+            text += "Ho va ten: " + ((NVPartTime) nv).getTenNhanVien() + "\n";
+            text += "Vi tri: " + ((NVPartTime) nv).getThoiGianLamViec() + "\n";
+            text += "Luong: " + ((NVPartTime) nv).tinhLuong() + "\n";
         }
-        
+
         jTextArea1.append(text);
     }
 
@@ -173,5 +164,4 @@ public class ChiPhiNhanVien extends javax.swing.JPanel {
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 
-    
 }

@@ -36,8 +36,8 @@ public class SanPham {
     public int getSoluong() {
         return soluong;
     }
-    
-    public String getTheloai(){
+
+    public String getTheloai() {
         return "";
     }
 

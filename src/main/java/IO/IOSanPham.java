@@ -3,14 +3,14 @@ package IO;
 import KhoHang.DiaNhac;
 import KhoHang.DiaPhim;
 import KhoHang.Sach;
-import NhanVien.NVPastTime;
+import NhanVien.NVPartTime;
 import NhanVien.NhanVien;
 import NhanVien.NhanVienCoDinh;
 import KhoHang.SanPham;
 import DoanhThu.SuKien;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+//import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -141,7 +141,6 @@ public class IOSanPham {
                 sk.setSp(sp);
 
                 Date ngay = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US).parse(sc.nextLine());
-//                System.out.print(list_sp.size());   
                 sk.setNgay(ngay);
                 sk.setHanhdong(sc.nextLine());
                 sk.setSoluong_hd(Integer.parseInt(sc.nextLine()));
@@ -162,11 +161,11 @@ public class IOSanPham {
                     pw.println(((NhanVienCoDinh) nv).getViTri());
                     pw.println(((NhanVienCoDinh) nv).getLuongCoBan());
                     pw.println(((NhanVienCoDinh) nv).getHeSoLuong());
-                } else if (nv instanceof NVPastTime) {
+                } else if (nv instanceof NVPartTime) {
                     pw.println(1);
                     pw.println(nv.getTenNhanVien());
-                    pw.println(((NVPastTime) nv).getThoiGianLamViec());
-                    pw.println(((NVPastTime) nv).getLuongTheoGio());
+                    pw.println(((NVPartTime) nv).getThoiGianLamViec());
+                    pw.println(((NVPartTime) nv).getLuongTheoGio());
                 }
 
             }
@@ -188,7 +187,7 @@ public class IOSanPham {
                     nv.setHeSoLuong(Double.parseDouble(sc.nextLine()));
                     list.add(nv);
                 } else if (number == 1) {
-                    NVPastTime nv = new NVPastTime();
+                    NVPartTime nv = new NVPartTime();
                     nv.setTenNhanVien(sc.nextLine());
                     nv.setThoiGianLamViec(Double.parseDouble(sc.nextLine()));
                     nv.setLuongTheoGio(Double.parseDouble(sc.nextLine()));

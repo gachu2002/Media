@@ -4,18 +4,18 @@ package KhoHang;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author minhd
  */
 public class DiaPhim extends SanPham {
-    String daodien,dienvien;
+
+    String daodien, dienvien;
     String theloai;
     int namsanxuat;
+
     public DiaPhim() {
     }
-          
 
     public String getDaodien() {
         return daodien;
@@ -48,8 +48,8 @@ public class DiaPhim extends SanPham {
     public void setNamsanxuat(int namsanxuat) {
         this.namsanxuat = namsanxuat;
     }
-          public DiaPhim(String daodien,String dienvien,String theloai, int namsanxuat)
-    {
+
+    public DiaPhim(String daodien, String dienvien, String theloai, int namsanxuat) {
         this.daodien = daodien;
         this.dienvien = dienvien;
         this.theloai = theloai;
