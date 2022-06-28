@@ -4,22 +4,19 @@ package KhoHang;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author minhd
  */
 public class DiaNhac extends SanPham {
 
-    
     String tencasi;
     String theloai;
     int namphathanh;
 
-    
     public DiaNhac() {
     }
-    
+
     public String getTencasi() {
         return tencasi;
     }
@@ -43,9 +40,8 @@ public class DiaNhac extends SanPham {
     public void setNamphathanh(int namphathanh) {
         this.namphathanh = namphathanh;
     }
-    
-    public DiaNhac(String tencasi,String theloai, int namphathanh)
-    {
+
+    public DiaNhac(String tencasi, String theloai, int namphathanh) {
         this.tencasi = tencasi;
         this.theloai = theloai;
         this.namphathanh = namphathanh;

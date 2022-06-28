@@ -4,50 +4,39 @@
  */
 package View;
 
-import IO.IOSanPham;
+import IO.IO;
 import KhoHang.SanPham;
 import DoanhThu.SuKien;
-import ThanhToan.ThanhToan;
+import ThanhToan.HoaDon;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Vector;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Administrator
  */
-public class HoaDonViews extends javax.swing.JFrame {
-    ThanhToan HD = new ThanhToan();
-    IOSanPham IO = new IOSanPham();
+public class ThanhToanView extends javax.swing.JFrame {
+
+    private HoaDon HD;
+    private IO IO;
+    private ArrayList<SanPham> list_kho;
     private ArrayList<SuKien> list_SuKien;
-    private ArrayList<SanPham> list;
-    private ArrayList<String> list_tensanpham;
-    private ArrayList<Integer> list_soluongsanpham;
-    private ArrayList<Integer> list_giaban;
+
     /**
      * Creates new form HoaDonViews
      */
-    public HoaDonViews() {
+    public ThanhToanView() {
         initComponents();
         this.setLocationRelativeTo(null);
-        list = IO.docSP();
-        list_SuKien = IO.docSK(list);
-        list_tensanpham = new ArrayList<> ();
-        list_soluongsanpham = new ArrayList<> ();
-        list_giaban = new ArrayList<> ();
-
-        for (int i= 0; i< list.size();i++){
-            list_tensanpham.add(list.get(i).getTensanpham());
-            list_soluongsanpham.add(list.get(i).getSoluong());
-            list_giaban.add(list.get(i).getGiaban());
-        }
+        this.IO = new IO();
+        this.list_kho = IO.docSP();
+        this.list_SuKien = IO.docSK(list_kho);
+        this.HD = new HoaDon();
         TAHoaDon.setEditable(false);
-//        System.out.println(list.size());
-
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -124,9 +113,9 @@ public class HoaDonViews extends javax.swing.JFrame {
             }
         });
 
-        lbtenSanPham.setText("tên sản phẩm");
+        lbtenSanPham.setText("Tên sản phẩm");
 
-        lbsoluong.setText("số lượng");
+        lbsoluong.setText("Số lượng");
 
         BTNBotSPHD.setText("Bớt");
         BTNBotSPHD.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +169,7 @@ public class HoaDonViews extends javax.swing.JFrame {
                         .addComponent(BtnXoaSPHD)))
                 .addGap(88, 88, 88))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BtnBack)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -208,70 +197,82 @@ public class HoaDonViews extends javax.swing.JFrame {
 
     private void BtnThemSPHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnThemSPHDActionPerformed
         // TODO add your handling code here:
-//        SanPham sp =null;
-//        for (int i =0;i < list.size();i++){
-//            if(TFtenSanPhamHD.getText().equals(list.get(i).getTensanpham()) & Integer.parseInt(TFsoluongHD.getText()) <= list.get(i).getSoluong()){
-//                sp = list.get(i);
-//                break;
-//            }
-//        }
-//        if (sp == null) {
-//            System.out.print("khong co san pham");
-//            return;
-//        }
-//        
-        int key = -1;
-        for (int i =0;i < list_tensanpham.size();i++){
-            if(TFtenSanPhamHD.getText().equals(list_tensanpham.get(i)) & Integer.parseInt(TFsoluongHD.getText()) <= list_soluongsanpham.get(i)){
-                key = i;
-                break;
+        int i = 0;
+        try {
+            for (; i < this.list_kho.size(); i++) {
+                if (TFtenSanPhamHD.getText().equals(this.list_kho.get(i).getTensanpham())) {
+                    if (Integer.parseInt(TFsoluongHD.getText()) <= this.list_kho.get(i).getSoluong()) {
+                        break;
+                    } else {
+                        JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+                        JOptionPane.showMessageDialog(frame,
+                                "Trong kho không đủ số sản phẩm yêu cầu!",
+                                "",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                }
             }
+        } catch (Exception e) {
+            System.out.println(e);
+            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+            JOptionPane.showMessageDialog(frame,
+                    "Chưa nhập đủ thông tin!",
+                    "",
+                    JOptionPane.ERROR_MESSAGE);
         }
-        if (key == -1) {
-            System.out.print("khong co san pham");
+        if (i == this.list_kho.size()) {
+            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+            JOptionPane.showMessageDialog(frame,
+                    "Sản phẩm không có trong kho!",
+                    "",
+                    JOptionPane.ERROR_MESSAGE);
             return;
         }
+
         // class HoaDon
-        HD.themSanPham(list_tensanpham.get(key),Integer.parseInt(TFsoluongHD.getText()),list_giaban.get(key));
-        list_soluongsanpham.set(key,list_soluongsanpham.get(key) -Integer.parseInt(TFsoluongHD.getText()));
-//        System.out.print(list_soluongsanpham.get(key));
-        // thay doi so luong san pham trong kho
-//        Date ngay = new Date();
-//        SuKien sk = new SuKien(sp,ngay,"ban",Integer. parseInt(TFsoluongHD.getText())); //// can mang su kien vi khi dung lenh xoa thi ta se ko co su kien nay
-//        sk.isRealSK();
-//        list_SuKien.add(sk);
-        
-        
-        /// in ra ketqua
+        HD.themSanPham(this.list_kho.get(i).getTensanpham(), Integer.parseInt(TFsoluongHD.getText()), this.list_kho.get(i).getGiaban());
+        SanPham spmoi = this.list_kho.get(i);
+        spmoi.setSoLuong(spmoi.getSoluong() - Integer.parseInt(TFsoluongHD.getText()));
+/// in ra ketqua
         showResultHD();
     }//GEN-LAST:event_BtnThemSPHDActionPerformed
 
     private void BTNBotSPHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNBotSPHDActionPerformed
         // TODO add your handling code here:
-//        SanPham sp =null;
-//        for (int i =0;i < list.size();i++){
-//            if(TFtenSanPhamHD.getText().equals(list.get(i).getTensanpham())){
-//                sp = list.get(i);
-//                break;
-//            }
-//        }
-//        if (sp == null) {
-//            System.out.print("khong co san pham");
-//            return;
-//        }
-
-        int key = -1;
-        for (int i =0;i < list_tensanpham.size();i++){
-            if(TFtenSanPhamHD.getText().equals(list_tensanpham.get(i)) & list_soluongsanpham.get(i)  + Integer.parseInt(TFsoluongHD.getText()) <=list.get(i).getSoluong()){
-                key = i;
-                break;
+        int i = 0;
+        try {
+            for (; i < HD.getDanhSachSanPham().size(); i++) {
+                if (TFtenSanPhamHD.getText().equals(HD.getDanhSachSanPham().get(i))) {
+                    if (Integer.parseInt(TFsoluongHD.getText()) > HD.getDanhSachSoLuong().get(i)) {
+                        JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+                        JOptionPane.showMessageDialog(frame,
+                                "Số lượng sản phẩm muốn bỏ ra vượt quá số lượng sản phẩm đã thêm!",
+                                "",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    } else {
+                        break;
+                    }
+                }
             }
+        } catch (Exception e) {
+            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+            JOptionPane.showMessageDialog(frame,
+                    "Chưa nhập đủ thông tinnnn!",
+                    "",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
         }
-        if (key == -1) return;
-        HD.botSanPham(list_tensanpham.get(key),Integer.parseInt(TFsoluongHD.getText()),list_giaban.get(key));
-        list_soluongsanpham.set(key,list_soluongsanpham.get(key)  + Integer.parseInt(TFsoluongHD.getText()));
-//        System.out.print(HD.getSoLuongSanPham());
-//        System.out.print(list_soluongsanpham.get(key));
+        if (i == HD.getDanhSachSanPham().size()) {
+            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+            JOptionPane.showMessageDialog(frame,
+                    "Không có sản phẩm!",
+                    "",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        HD.botSanPham(HD.getDanhSachSanPham().get(i), Integer.parseInt(TFsoluongHD.getText()), HD.getDanhSachGia().get(i));
         showResultHD();
     }//GEN-LAST:event_BTNBotSPHDActionPerformed
 
@@ -284,67 +285,42 @@ public class HoaDonViews extends javax.swing.JFrame {
 
     private void BtnInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInActionPerformed
         // TODO add your handling code here:
-//        System.out.print(list_SuKien.size());
-        for (int i =0; i< list_tensanpham.size();i++){
+        for (int i = 0; i < HD.getDanhSachSanPham().size(); i++) {
             SanPham sp = null;
-            for (int j = 0; j< list.size();j++){
-                if (list_tensanpham.get(i).equals(list.get(j).getTensanpham())){
-                   sp = list.get(j);
-                   break;
+            for (int j = 0; j < this.list_kho.size(); j++) {
+                if (HD.getDanhSachSanPham().get(i).equals(this.list_kho.get(j).getTensanpham())) {
+                    sp = this.list_kho.get(j);
+                    break;
                 }
             }
-            if(sp == null) return;
-            if(list_soluongsanpham.get(i)<sp.getSoluong()){
-               Date ngay = new Date();
-                SuKien sk = new SuKien(sp,ngay,"ban",sp.getSoluong()-list_soluongsanpham.get(i)); //// can mang su kien vi khi dung lenh xoa thi ta se ko co su kien nay
-                sk.isRealSK();
-                list_SuKien.add(sk); 
+            if (sp == null) {
+                return;
             }
-            
+            if (HD.getDanhSachSoLuong().get(i) < sp.getSoluong()) {
+                Date ngay = new Date();
+                SuKien sk = new SuKien(sp, ngay, "ban", sp.getSoluong() - HD.getDanhSachSoLuong().get(i));
+// can mang su kien vi khi dung lenh xoa thi ta se ko co su kien nay
+                sk.isRealSK();
+                list_SuKien.add(sk);
+            }
+
         }
-//        System.out.print(list_SuKien.size());
-        IO.ghiSP(list);
+        IO.ghiSP(this.list_kho);
         IO.ghiSK(list_SuKien);
-        list = IO.docSP();
-        list_SuKien = IO.docSK(list);
-        list_tensanpham = new ArrayList<> ();
-        list_soluongsanpham = new ArrayList<> ();
-        list_giaban = new ArrayList<> ();
-        for (int i= 0; i< list.size();i++){
-            list_tensanpham.add(list.get(i).getTensanpham());
-            list_soluongsanpham.add(list.get(i).getSoluong());
-            list_giaban.add(list.get(i).getGiaban());
-        }
-        HD = new ThanhToan();
     }//GEN-LAST:event_BtnInActionPerformed
-    
-    
+
     private void showResultHD() {
         String text = "";
         text += HD.ngayThanhToan();
         text += "\nDanh sach san pham:";
-        
+
         for (int i = 0; i < HD.getDanhSachSanPham().size(); ++i) {
-            text = text + "\n"  + (i + 1) + ". " + HD.getDanhSachSanPham().get(i) + "*" + HD.getSoLuongSanPham().get(i);
+            text = text + "\n" + (i + 1) + ". " + HD.getDanhSachSanPham().get(i) + "*" + HD.getDanhSachSoLuong().get(i);
         }
         text += "\n-----------------------------------";
-        text += "\n" +"Tong gia tri hoa don: " + HD.tongHoaDon();
+        text += "\n" + "Tong gia tri hoa don: " + HD.tongHoaDon();
         TAHoaDon.setText(text);
     }
-    
-    
-    
-    
-    
-//    public static void main(String args[]) {
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new HoaDonViews().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTNBotSPHD;
@@ -370,5 +346,4 @@ public class HoaDonViews extends javax.swing.JFrame {
     private java.awt.PopupMenu popupMenu2;
     // End of variables declaration//GEN-END:variables
 
-    
 }

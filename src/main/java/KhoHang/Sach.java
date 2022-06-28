@@ -4,20 +4,19 @@ package KhoHang;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author minhd
  */
 public class Sach extends SanPham {
 
-    
-    String tentacgia,nhaxuatban;
+    String tentacgia, nhaxuatban;
     String theloai;
     int namphathanh;
-    
+
     public Sach() {
     }
+
     public String getTentacgia() {
         return tentacgia;
     }
@@ -49,10 +48,10 @@ public class Sach extends SanPham {
     public void setNamphathanh(int namphathanh) {
         this.namphathanh = namphathanh;
     }
-    public Sach(String tentacgia,String nhaxuatban,String theloai, int namphathanh)
-    {
-        this.tentacgia=tentacgia;
-        this.nhaxuatban=nhaxuatban;
+
+    public Sach(String tentacgia, String nhaxuatban, String theloai, int namphathanh) {
+        this.tentacgia = tentacgia;
+        this.nhaxuatban = nhaxuatban;
         this.theloai = theloai;
         this.namphathanh = namphathanh;
     }
@@ -69,5 +68,4 @@ public class Sach extends SanPham {
 //        System.out.println("Nam phat hanh: "+namphathanh);
 //        super.thongtin();
 //    }
-    
 }

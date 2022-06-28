@@ -1,9 +1,7 @@
-
 package View;
 
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
-
 
 public class ChiPhiViews extends javax.swing.JFrame {
 

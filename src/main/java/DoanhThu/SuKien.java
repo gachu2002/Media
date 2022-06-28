@@ -51,14 +51,13 @@ public class SuKien {
         this.ngay = ngay;
         this.hanhdong = hanhdong;
         this.soluong_hd = soluong_hd;
-
     }
 
     public void isRealSK() {
         if (this.hanhdong.equals("mua")) {
-            this.sp.soluong += this.soluong_hd;
-        } else if (this.hanhdong.equals("ban") & this.sp.soluong > this.soluong_hd - 1) {
-            this.sp.soluong -= this.soluong_hd;
+            this.sp.setSoLuong(this.sp.getSoluong() + this.soluong_hd);
+        } else if (this.hanhdong.equals("ban") & this.sp.getSoluong() > this.soluong_hd - 1) {
+            this.sp.setSoLuong(this.sp.getSoluong() - this.soluong_hd);
         }
 //        else return 0;
 //        return 0;
