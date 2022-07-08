@@ -8,6 +8,7 @@ import NhanVien.NhanVien;
 import NhanVien.NhanVienCoDinh;
 import KhoHang.SanPham;
 import DoanhThu.SuKien;
+import ThongBao.ThongBao;
 
 import java.io.File;
 //import java.io.FileNotFoundException;
@@ -199,6 +200,33 @@ public class IO {
             System.out.println("got an exception");
         }
         return list;
+    }
+
+    public ArrayList<ThongBao> docThongBao() {
+        ArrayList<ThongBao> dsThongBao = new ArrayList<>();
+        try ( Scanner sc = new Scanner(new File("src\\main\\java\\IO\\dsThongBao.csv"))) {
+            sc.useDelimiter("\n");
+            while (sc.hasNext()) {
+                String nextLine = sc.next();
+                String cacTruong[] = nextLine.split(",");
+                dsThongBao.add(new ThongBao(cacTruong[0], (cacTruong[1].substring(0, 4).equals("true"))));
+            }
+            sc.close();
+
+        } catch (Exception e) {
+            System.out.println("got an exception");
+        }
+        return dsThongBao;
+    }
+
+    public void ghiThongBao(ArrayList<ThongBao> dsThongBao) {
+        try ( PrintWriter pw = new PrintWriter(new File("src\\main\\java\\IO\\dsThongBao.csv"))) {
+            for (ThongBao tb : dsThongBao) {
+                pw.print(tb.getMessage() + "," + tb.getRead() + "\n");
+            }
+        } catch (Exception e) {
+            System.out.println("got an exception!");
+        }
     }
 
 }

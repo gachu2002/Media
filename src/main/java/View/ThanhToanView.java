@@ -259,7 +259,7 @@ public class ThanhToanView extends javax.swing.JFrame {
         } catch (Exception e) {
             JFrame frame = new JFrame("JOptionPane showMessageDialog example");
             JOptionPane.showMessageDialog(frame,
-                    "Chưa nhập đủ thông tinnnn!",
+                    "Chưa nhập đủ thông tin!",
                     "",
                     JOptionPane.ERROR_MESSAGE);
             return;
