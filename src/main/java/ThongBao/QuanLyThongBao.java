@@ -26,8 +26,8 @@ public class QuanLyThongBao {
             }
         }
     }
-    
-    public void themThongBao(ThongBao tb){
+
+    public void themThongBao(ThongBao tb) {
         this.danhSachThongBao.add(tb);
     }
 
