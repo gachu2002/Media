@@ -4,6 +4,8 @@
  */
 package DoanhThu;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author XPS
@@ -12,8 +14,8 @@ public class SuKienTheoChuKy extends SuKienDinhKy {
 
     private int soNgayMotChuKy;
 
-    public SuKienTheoChuKy(int soNgayMotChuKy) {
-        super();
+    public SuKienTheoChuKy(String tenSK, String loaiSK, LocalDateTime ngayBatDau, int soNgayMotChuKy) {
+        super(tenSK, loaiSK, ngayBatDau);
         this.soNgayMotChuKy = soNgayMotChuKy;
     }
 

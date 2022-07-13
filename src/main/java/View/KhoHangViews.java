@@ -436,9 +436,9 @@ public class KhoHangViews extends javax.swing.JFrame {
         }
         key = 0;
         Date ngay = new Date();
-        SuKienMotLan sk = new SuKienMotLan(sp, ngay, "mua", Integer.parseInt(TFSoLuongNhap.getText()));
-        sk.isRealSK();
-        listSanPham_SuKien.add(sk);
+//        SuKienMotLan sk = new SuKienMotLan(sp, ngay, "mua", Integer.parseInt(TFSoLuongNhap.getText()));
+//        sk.isRealSK();
+//        listSanPham_SuKien.add(sk);
         showResult(); /// Bảng hiện thêm hàng do hàm showResult này còn danh sách listSanPham vẫn chỉ có các sản phẩm ko cùng tên
         io.ghiSP(listSanPham);
         io.ghiSKMotLan(listSanPham_SuKien);

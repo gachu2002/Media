@@ -29,20 +29,30 @@ TODO4: chia rõ các class Quản lý với các class View (?)
 TODO5: NhanVien: ArrayList<NhanVien>, them, xoa, ...
  */
 public class SuKien {
-     private String tenSuKien;
-     private String loaiSuKien;
-     public String getTenSuKien(){
-           return this.tenSuKien;
-     }
-     public String getLoaiSuKien(){
-           return this.loaiSuKien;
-     }
-     public void setTenSuKien(String tenSuKien){
-           this.tenSuKien=tenSuKien;
-     }
-     public void setLoaiSuKien(String loaiSuKien){
-           this.loaiSuKien=loaiSuKien;
-     }
+
+    private String tenSuKien;
+    private String loaiSuKien;
+
+    public SuKien(String tenSK, String loaiSK) {
+        this.tenSuKien = tenSK;
+        this.loaiSuKien = loaiSK;
+    }
+
+    public String getTenSuKien() {
+        return this.tenSuKien;
+    }
+
+    public String getLoaiSuKien() {
+        return this.loaiSuKien;
+    }
+
+    public void setTenSuKien(String tenSuKien) {
+        this.tenSuKien = tenSuKien;
+    }
+
+    public void setLoaiSuKien(String loaiSuKien) {
+        this.loaiSuKien = loaiSuKien;
+    }
 //    public SuKien() {
 //    }
 //

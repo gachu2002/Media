@@ -6,7 +6,7 @@ package View;
 
 import IO.IO;
 import KhoHang.SanPham;
-import DoanhThu.SuKien;
+import DoanhThu.SuKienMotLan;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,13 +18,13 @@ public class ChiPhiSanPham extends javax.swing.JPanel {
 
     IO io = new IO();
     private ArrayList<SanPham> list;
-    private ArrayList<SuKien> list_SuKien;
+    private ArrayList<SuKienMotLan> list_SuKien;
     DefaultTableModel model;
 
     public ChiPhiSanPham() {
         initComponents();
         list = io.docSP();
-        list_SuKien = io.docSK(list);
+        list_SuKien = io.docSKMotLan();
         model = (DefaultTableModel) jTable1.getModel();
 //        System.out.print(list_SuKien.size());    
     }
@@ -143,16 +143,16 @@ public class ChiPhiSanPham extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SoLuongActionPerformed
-        // TODO add your handling code here:
-        model.setRowCount(0);
-        for (int i = 0; i < list_SuKien.size(); i++) {
-            SuKien sk = list_SuKien.get(i);
-            if (sk.getSoluong_hd() == Integer.parseInt(TFsoluong.getText())) {
-                model.addRow(new Object[]{
-                    sk.getSp().getTensanpham(), sk.getNgay(), sk.getHanhdong(), sk.getSoluong_hd()
-                });
-            }
-        }
+//        // TODO add your handling code here:
+//        model.setRowCount(0);
+//        for (int i = 0; i < list_SuKien.size(); i++) {
+//            SuKien sk = list_SuKien.get(i);
+//            if (sk.getSoluong_hd() == Integer.parseInt(TFsoluong.getText())) {
+//                model.addRow(new Object[]{
+//                    sk.getSp().getTensanpham(), sk.getNgay(), sk.getHanhdong(), sk.getSoluong_hd()
+//                });
+//            }
+//        }
     }//GEN-LAST:event_SoLuongActionPerformed
 
     private void BanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BanActionPerformed
@@ -160,39 +160,39 @@ public class ChiPhiSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_BanActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        model.setRowCount(0);
-        for (int i = 0; i < list_SuKien.size(); i++) {
-            SuKien sk = list_SuKien.get(i);
-            model.addRow(new Object[]{
-                sk.getSp().getTensanpham(), sk.getNgay(), sk.getHanhdong(), sk.getSoluong_hd()
-            });
-        }
+//        // TODO add your handling code here:
+//        model.setRowCount(0);
+//        for (int i = 0; i < list_SuKien.size(); i++) {
+//            SuKien sk = list_SuKien.get(i);
+//            model.addRow(new Object[]{
+//                sk.getSp().getTensanpham(), sk.getNgay(), sk.getHanhdong(), sk.getSoluong_hd()
+//            });
+//        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        if (Ban.isSelected()) {
-            model.setRowCount(0);
-            for (int i = 0; i < list_SuKien.size(); i++) {
-                SuKien sk = list_SuKien.get(i);
-                if (sk.getHanhdong().equals("ban")) {
-                    model.addRow(new Object[]{
-                        sk.getSp().getTensanpham(), sk.getNgay(), sk.getHanhdong(), sk.getSoluong_hd()
-                    });
-                }
-            }
-        } else if (Mua.isSelected()) {
-            model.setRowCount(0);
-            for (int i = 0; i < list_SuKien.size(); i++) {
-                SuKien sk = list_SuKien.get(i);
-                if (sk.getHanhdong().equals("mua")) {
-                    model.addRow(new Object[]{
-                        sk.getSp().getTensanpham(), sk.getNgay(), sk.getHanhdong(), sk.getSoluong_hd()
-                    });
-                }
-            }
-        }
+//        if (Ban.isSelected()) {
+//            model.setRowCount(0);
+//            for (int i = 0; i < list_SuKien.size(); i++) {
+//                SuKien sk = list_SuKien.get(i);
+//                if (sk.getHanhdong().equals("ban")) {
+//                    model.addRow(new Object[]{
+//                        sk.getSp().getTensanpham(), sk.getNgay(), sk.getHanhdong(), sk.getSoluong_hd()
+//                    });
+//                }
+//            }
+//        } else if (Mua.isSelected()) {
+//            model.setRowCount(0);
+//            for (int i = 0; i < list_SuKien.size(); i++) {
+//                SuKien sk = list_SuKien.get(i);
+//                if (sk.getHanhdong().equals("mua")) {
+//                    model.addRow(new Object[]{
+//                        sk.getSp().getTensanpham(), sk.getNgay(), sk.getHanhdong(), sk.getSoluong_hd()
+//                    });
+//                }
+//            }
+//        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
