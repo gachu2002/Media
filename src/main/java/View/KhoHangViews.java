@@ -6,6 +6,7 @@ import KhoHang.DiaPhim;
 import KhoHang.Sach;
 import KhoHang.SanPham;
 import DoanhThu.SuKien;
+import DoanhThu.SuKienMotLan;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class KhoHangViews extends javax.swing.JFrame {
 
     private ArrayList<SanPham> listSanPham;
-    private ArrayList<SuKien> listSanPham_SuKien;
+    private ArrayList<SuKienMotLan> listSanPham_SuKien;
     DefaultTableModel model;
     int key = 0;
 
@@ -435,12 +436,12 @@ public class KhoHangViews extends javax.swing.JFrame {
         }
         key = 0;
         Date ngay = new Date();
-        SuKien sk = new SuKien(sp, ngay, "mua", Integer.parseInt(TFSoLuongNhap.getText()));
+        SuKienMotLan sk = new SuKienMotLan(sp, ngay, "mua", Integer.parseInt(TFSoLuongNhap.getText()));
         sk.isRealSK();
         listSanPham_SuKien.add(sk);
         showResult(); /// Bảng hiện thêm hàng do hàm showResult này còn danh sách listSanPham vẫn chỉ có các sản phẩm ko cùng tên
         io.ghiSP(listSanPham);
-        io.ghiSK(listSanPham_SuKien);
+        io.ghiSKMotLan(listSanPham_SuKien);
 
     }//GEN-LAST:event_BtnInsertActionPerformed
 

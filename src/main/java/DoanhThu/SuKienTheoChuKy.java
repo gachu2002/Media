@@ -9,5 +9,15 @@ package DoanhThu;
  * @author XPS
  */
 public class SuKienTheoChuKy extends SuKienDinhKy {
-    
+
+    private int soNgayMotChuKy;
+
+    public SuKienTheoChuKy(int soNgayMotChuKy) {
+        super();
+        this.soNgayMotChuKy = soNgayMotChuKy;
+    }
+
+    public void chinhNgay() {
+        this.ngayTiepTheo = this.ngayTiepTheo.plusMonths(1);
+    }
 }

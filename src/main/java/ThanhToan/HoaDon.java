@@ -8,47 +8,42 @@ package ThanhToan;
  *
  * @author minhd
  */
+import Exception.KhongDuSoSanPhamYeuCau;
+import Exception.SanPhamKhongCoTrongHoaDon;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import java.time.format.DateTimeFormatter;
 
 public class HoaDon {
 
-    private int day;
-    private int month;
-    private int year;
+    private LocalDateTime ngay;
     private ArrayList<String> danhSachSanPham;
     private ArrayList<Integer> danhSachSoLuong;
     private ArrayList<Double> danhSachGia;
 
     public HoaDon() {
-        LocalDateTime thoiDiemHienTai = LocalDateTime.now();
-        this.day = thoiDiemHienTai.getDayOfMonth();
-        this.month = thoiDiemHienTai.getMonthValue();
-        this.year = thoiDiemHienTai.getYear();
+        this.ngay = LocalDateTime.now();
         this.danhSachSanPham = new ArrayList<>();
         this.danhSachSoLuong = new ArrayList<>();
         this.danhSachGia = new ArrayList<>();
     }
 
-    public void themSanPham(String sanPham, int soLuong, double gia) {
-        for (Integer i = 0; i < danhSachSanPham.size(); ++i) {
-            if (this.danhSachSanPham.get(i).equals(sanPham)) {
-                int soLuongHienTai = danhSachSoLuong.get(i);
-                this.danhSachSoLuong.set(i, soLuongHienTai + soLuong);
-                return;
-            }
-        }
-        this.danhSachSanPham.add(sanPham);
-        this.danhSachSoLuong.add(soLuong);
-        this.danhSachGia.add(gia);
-    }
-
-    public void themSanPham(String sanPham, double gia) {
-        themSanPham(sanPham, 1, gia);
-    }
-
+//    public void themSanPham(String sanPham, int soLuong, double gia) {
+//        for (Integer i = 0; i < danhSachSanPham.size(); ++i) {
+//            if (this.danhSachSanPham.get(i).equals(sanPham)) {
+//                int soLuongHienTai = danhSachSoLuong.get(i);
+//                this.danhSachSoLuong.set(i, soLuongHienTai + soLuong);
+//                return;
+//            }
+//        }
+//        this.danhSachSanPham.add(sanPham);
+//        this.danhSachSoLuong.add(soLuong);
+//        this.danhSachGia.add(gia);
+//    }
+//
+//    public void themSanPham(String sanPham, double gia) {
+//        themSanPham(sanPham, 1, gia);
+//    }
     public double tongHoaDon() {
         Double tongHoaDon = 0D;
         for (int i = 0; i < danhSachSanPham.size(); ++i) {
@@ -57,28 +52,25 @@ public class HoaDon {
         return tongHoaDon;
     }
 
-    public void botSanPham(String sanPham, int soLuong, double gia) {
-        for (Integer i = 0; i < danhSachSanPham.size(); ++i) {
-            if (this.danhSachSanPham.get(i).equals(sanPham)) {
-                int soLuongHienTai = danhSachSoLuong.get(i);
-                soLuong = Math.min(soLuong, soLuongHienTai);
-                if (soLuong == soLuongHienTai) {
-                    this.danhSachSanPham.remove(i.intValue());
-                    this.danhSachSoLuong.remove(i.intValue());
-                    this.danhSachGia.remove(i.intValue());
-                } else {
-                    this.danhSachSoLuong.set(i, soLuongHienTai - soLuong);
-                }
-                return;
-            }
-        }
-        JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-        JOptionPane.showMessageDialog(frame,
-                "Sản phẩm chưa được thêm trong hóa đơn!",
-                "",
-                JOptionPane.ERROR_MESSAGE);
-    }
-
+//    public void botSanPham(String sanPham, int soLuong, double gia) throws SanPhamKhongCoTrongHoaDon, KhongDuSoSanPhamYeuCau {
+//        for (Integer i = 0; i < danhSachSanPham.size(); ++i) {
+//            if (this.danhSachSanPham.get(i).equals(sanPham)) {
+//                int soLuongHienTai = danhSachSoLuong.get(i);
+//                if (soLuong > soLuongHienTai) {
+//                    throw new KhongDuSoSanPhamYeuCau();
+//                }
+//                if (soLuong == soLuongHienTai) {
+//                    this.danhSachSanPham.remove(i.intValue());
+//                    this.danhSachSoLuong.remove(i.intValue());
+//                    this.danhSachGia.remove(i.intValue());
+//                } else {
+//                    this.danhSachSoLuong.set(i, soLuongHienTai - soLuong);
+//                }
+//                return;
+//            }
+//        }
+//        throw new SanPhamKhongCoTrongHoaDon();
+//    }
     public void xoaSanPham(String sanPham, double gia) {
         // xoa tat ca san pham
         for (Integer i = 0; i < danhSachSanPham.size(); ++i) {
@@ -98,8 +90,8 @@ public class HoaDon {
     public ArrayList<Integer> getDanhSachSoLuong() {
         return this.danhSachSoLuong;
     }
-    
-    public ArrayList<Double> getDanhSachGia(){
+
+    public ArrayList<Double> getDanhSachGia() {
         return this.danhSachGia;
     }
 
@@ -114,30 +106,6 @@ public class HoaDon {
     }
 
     public String ngayThanhToan() {
-        return this.day + "/" + this.month + "/" + this.year;
-    }
-
-    public int getDay() {
-        return this.day;
-    }
-
-    public int getMonth() {
-        return this.month;
-    }
-
-    public int getYear() {
-        return this.year;
-    }
-
-    public void setDay(int dayOfMonth) {
-        this.day = dayOfMonth;
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
+        return this.ngay.format(DateTimeFormatter.ISO_DATE);
     }
 }
