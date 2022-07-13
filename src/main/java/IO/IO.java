@@ -15,6 +15,8 @@ import java.io.File;
 //import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -116,7 +118,7 @@ public class IO {
     public void ghiSKMotLan(ArrayList<SuKienMotLan> dsSuKien) {
         try ( PrintWriter pw = new PrintWriter(new File("src\\main\\java\\IO\\dsSuKien.csv"))) {
             for (SuKienMotLan sk : dsSuKien) {
-                pw.print(sk.getNgay() + "," + sk.getTen() + "," + sk.getLoai() + "," + sk.getGiaTri());
+                pw.print(sk.getDate().toString() + "," + sk.getTenSuKien() + "," + sk.getLoaiSuKien() + "," + sk.getGiatri());
             }
         } catch (Exception e) {
             System.out.println("got an exception!");
@@ -130,7 +132,11 @@ public class IO {
             while (sc.hasNext()) {
                 String nextLine = sc.next();
                 String cacTruong[] = nextLine.split(",");
-                SuKienMotLan skml = new SuKienMotLan(cacTruong[0], cacTruong[1], cacTruong[2], Integer.parseInt(cacTruong[3]);
+                LocalDateTime ngay = LocalDateTime.parse(cacTruong[0]);
+                String tenSK = cacTruong[1];
+                String loaiSK = cacTruong[2];
+                int giaTri = Integer.parseInt(cacTruong[3]);
+                SuKienMotLan skml = new SuKienMotLan(ngay, tenSK, loaiSK, giaTri);
                 dsSuKienMotLan.add(skml);
             }
             sc.close();
