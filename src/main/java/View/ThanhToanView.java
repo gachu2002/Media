@@ -288,7 +288,7 @@ public class ThanhToanView extends javax.swing.JFrame {
 //        // TODO add your handling code here:
         // Them vao SK.DAT
         // In ra man hinh cua so hoa don
-        JFrame HDView = new HoaDonView2(this.TT.getHD());
+        JFrame HDView = new HoaDonView(this.TT.getHD());
         HDView.setVisible(true);
 
         this.setVisible(false);

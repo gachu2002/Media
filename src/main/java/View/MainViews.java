@@ -22,6 +22,7 @@ public class MainViews extends javax.swing.JFrame {
     public MainViews() {
         initComponents();
         this.setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -145,7 +146,7 @@ public class MainViews extends javax.swing.JFrame {
         JFrame NhanVienViews = new ChiPhiNhanVien();
         NhanVienViews.setVisible(true);
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_BtnNhanVienActionPerformed
 
     /**
