@@ -4,31 +4,67 @@
  */
 package DoanhThu;
 
+import IO.IO;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
  * @author XPS
  */
 public class QuanLySuKien {
-    
+
     private ArrayList<SuKienMotLan> dsSuKien;
-    
-    public QuanLySuKien(){
-        
+
+    public QuanLySuKien() {
+        IO IO = new IO();
+        this.dsSuKien = IO.docSKMotLan();
     }
-    
-    public int thongKeChiPhi(Date start, Date end){
-        return 0;
+
+    public ArrayList<SuKienMotLan> getThongKeSuKien(LocalDateTime start, LocalDateTime end) {
+        ArrayList<SuKienMotLan> dsThongKeSuKien = new ArrayList<SuKienMotLan>();
+        for (SuKienMotLan obj : dsSuKien) {
+            if ((obj.getDate()).compareTo(start) >= 0 && (obj.getDate()).compareTo(end) < 0) {
+                dsThongKeSuKien.add(obj);
+            }
+        }
+        return dsThongKeSuKien;
     }
+
+    public int getDoanhThu(LocalDateTime start, LocalDateTime end) {
+        int doanhthu = 0;
+        for (SuKienMotLan obj : this.getThongKeSuKien(start, end)) {
+            if ((obj.getLoaiSuKien()).equals("Bán")) {
+                doanhthu += obj.getGiatri();
+            }
+        }
+        return doanhthu;
+    }
+
+    public int getLoiNhuan(LocalDateTime start, LocalDateTime end) {
+        int doanhthu = 0;
+        for (SuKienMotLan obj : this.getThongKeSuKien(start, end)) {
+            if ((obj.getLoaiSuKien()).equals("Bán")) {
+                doanhthu += obj.getGiatri();
+            }
+            else {
+                doanhthu -=obj.getGiatri();
+            }}
+        return doanhthu;
+        }
     
-    public ArrayList<SuKienMotLan> getDanhSachSuKien(){
+    
+
+    
+
+    
+
+    public ArrayList<SuKienMotLan> getDanhSachSuKien() {
         return this.dsSuKien;
     }
-    
-    public void setDanhSachSuKien(ArrayList<SuKienMotLan> s){
+
+    public void setDanhSachSuKien(ArrayList<SuKienMotLan> s) {
         this.dsSuKien = s;
     }
-    
+
 }
