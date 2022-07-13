@@ -48,7 +48,6 @@ public class HoaDon {
 //    public void themSanPham(String sanPham, double gia) {
 //        themSanPham(sanPham, 1, gia);
 //    }
-
     public double tongHoaDon() {
         Double tongHoaDon = 0D;
         for (int i = 0; i < danhSachSanPham.size(); ++i) {
@@ -57,26 +56,25 @@ public class HoaDon {
         return tongHoaDon;
     }
 
-    public void botSanPham(String sanPham, int soLuong, double gia) throws SanPhamKhongCoTrongHoaDon, KhongDuSoSanPhamYeuCau {
-        for (Integer i = 0; i < danhSachSanPham.size(); ++i) {
-            if (this.danhSachSanPham.get(i).equals(sanPham)) {
-                int soLuongHienTai = danhSachSoLuong.get(i);
-                if (soLuong > soLuongHienTai) {
-                    throw new KhongDuSoSanPhamYeuCau();
-                }
-                if (soLuong == soLuongHienTai) {
-                    this.danhSachSanPham.remove(i.intValue());
-                    this.danhSachSoLuong.remove(i.intValue());
-                    this.danhSachGia.remove(i.intValue());
-                } else {
-                    this.danhSachSoLuong.set(i, soLuongHienTai - soLuong);
-                }
-                return;
-            }
-        }
-        throw new SanPhamKhongCoTrongHoaDon();
-    }
-
+//    public void botSanPham(String sanPham, int soLuong, double gia) throws SanPhamKhongCoTrongHoaDon, KhongDuSoSanPhamYeuCau {
+//        for (Integer i = 0; i < danhSachSanPham.size(); ++i) {
+//            if (this.danhSachSanPham.get(i).equals(sanPham)) {
+//                int soLuongHienTai = danhSachSoLuong.get(i);
+//                if (soLuong > soLuongHienTai) {
+//                    throw new KhongDuSoSanPhamYeuCau();
+//                }
+//                if (soLuong == soLuongHienTai) {
+//                    this.danhSachSanPham.remove(i.intValue());
+//                    this.danhSachSoLuong.remove(i.intValue());
+//                    this.danhSachGia.remove(i.intValue());
+//                } else {
+//                    this.danhSachSoLuong.set(i, soLuongHienTai - soLuong);
+//                }
+//                return;
+//            }
+//        }
+//        throw new SanPhamKhongCoTrongHoaDon();
+//    }
     public void xoaSanPham(String sanPham, double gia) {
         // xoa tat ca san pham
         for (Integer i = 0; i < danhSachSanPham.size(); ++i) {

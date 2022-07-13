@@ -29,47 +29,96 @@ public class ChucNangThanhToan {
     }
 
     public void themSanPham(String sanPham, int soLuong) throws SanPhamKhongCoTrongKho, KhongDuSoSanPhamYeuCau {
-//        System.out.println("tung");
-//        System.out.println("tung");
-//        ArrayList<String> dsSanPham = this.HD.getDanhSachSanPham();
-//        ArrayList<Double> dsGia = this.HD.getDanhSachGia();
-//        ArrayList<Integer> dsSoLuong = this.HD.getDanhSachSoLuong();
-//        System.out.println("tung");
-//
-//        boolean spCoTrongKho = false;
-//        for (SanPham sp : list_kho) {
-//            if (sp.getTensanpham().equals(sanPham)) {
-//                boolean daCo = false;
-//                for (int i = 0; i < dsSanPham.size(); ++i) {
-//                    if (dsSanPham.get(i).equals(sanPham)) {
-//                        if (sp.getSoluong() < soLuong) {
-//                            throw new KhongDuSoSanPhamYeuCau();
-//                        }
-//                        dsSoLuong.set(i, dsSoLuong.get(i) + soLuong);
-//                        sp.setSoLuong(sp.getSoluong() - soLuong);
-//                        daCo = true;
-//                        break;
-//                    }
-//                }
-//                if (daCo == false) {
-//                    dsSanPham.add(sanPham);
-//                    dsGia.add(new Double(sp.getGiaban()));
-//                    dsSoLuong.add(soLuong);
-//                }
-//                spCoTrongKho = true;
-//            }
-//        }
-//        if (spCoTrongKho == false) {
-//            throw new SanPhamKhongCoTrongKho();
-//        }
+        ArrayList<String> dsSanPham = this.HD.getDanhSachSanPham();
+        ArrayList<Double> dsGia = this.HD.getDanhSachGia();
+        ArrayList<Integer> dsSoLuong = this.HD.getDanhSachSoLuong();
+
+        boolean spCoTrongKho = false;
+        for (int j = 0; j < list_kho.size(); j++) {
+            SanPham sp = list_kho.get(j);
+            if (sp.getTensanpham().equals(sanPham)) {
+                if (sp.getSoluong() < soLuong) {
+                    throw new KhongDuSoSanPhamYeuCau();
+                }
+                boolean daCo = false;
+                for (int i = 0; i < dsSanPham.size(); ++i) {
+                    if (dsSanPham.get(i).equals(sanPham)) {
+                        dsSoLuong.set(i, dsSoLuong.get(i) + soLuong);
+                        daCo = true;
+                        break;
+                    }
+                }
+                if (daCo == false) {
+                    dsSanPham.add(sanPham);
+                    dsGia.add(new Double(sp.getGiaban()));
+                    dsSoLuong.add(soLuong);
+                }
+                if (sp.getSoluong() == soLuong) {
+                    list_kho.remove(j);
+                } else {
+                    sp.setSoLuong(sp.getSoluong() - soLuong);
+                }
+                IO.ghiSP(list_kho);
+                spCoTrongKho = true;
+            }
+        }
+        if (spCoTrongKho == false) {
+            throw new SanPhamKhongCoTrongKho();
+        }
+
     }
 
-    public void botSanPham(String sanPham, int soLuong) {
+    public void botSanPham(String sanPham, int soLuong) throws SanPhamKhongCoTrongHoaDon, KhongDuSoSanPhamYeuCau {
+        ArrayList<String> dsSanPham = this.HD.getDanhSachSanPham();
+        ArrayList<Double> dsGia = this.HD.getDanhSachGia();
+        ArrayList<Integer> dsSoLuong = this.HD.getDanhSachSoLuong();
 
+        for (Integer i = 0; i < dsSanPham.size(); ++i) {
+            if (dsSanPham.get(i).equals(sanPham)) {
+                int soLuongHienTai = dsSoLuong.get(i);
+                if (soLuong > soLuongHienTai) {
+                    throw new KhongDuSoSanPhamYeuCau();
+                }
+                for (int j = 0; j < list_kho.size(); ++j) {
+                    SanPham sp = list_kho.get(j);
+                    if (sp.getTensanpham().equals(sanPham)) {
+                        if (soLuong == soLuongHienTai) {
+                            sp.setSoLuong(sp.getSoluong() + soLuong);
+                            dsSanPham.remove(i.intValue());
+                            dsSoLuong.remove(i.intValue());
+                            dsGia.remove(i.intValue());
+                        } else {
+                            sp.setSoLuong(sp.getSoluong() + soLuong);
+                            dsSoLuong.set(i, soLuongHienTai - soLuong);
+                        }
+                        IO.ghiSP(list_kho);
+                    }
+                }
+                return;
+            }
+        }
+        throw new SanPhamKhongCoTrongHoaDon();
     }
 
     public void inHoaDon() {
 
+    }
+
+    public void huy() {
+        ArrayList<String> dsSanPham = this.HD.getDanhSachSanPham();
+        ArrayList<Double> dsGia = this.HD.getDanhSachGia();
+        ArrayList<Integer> dsSoLuong = this.HD.getDanhSachSoLuong();
+
+        for (int i = 0; i < dsSanPham.size(); ++i) {
+            for (int j = 0; j < list_kho.size(); ++j) {
+                SanPham sp = list_kho.get(j);
+                if (sp.getTensanpham().equals(dsSanPham.get(i))) {
+                    sp.setSoLuong(sp.getSoluong() + dsSoLuong.get(i));
+                    break;
+                }
+            }
+        }
+        IO.ghiSP(list_kho);
     }
 
     public HoaDon getHD() {

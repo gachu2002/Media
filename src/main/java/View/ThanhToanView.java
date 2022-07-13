@@ -5,6 +5,9 @@
 package View;
 
 import Exception.ChuaNhapDuThongTin;
+import Exception.KhongDuSoSanPhamYeuCau;
+import Exception.SanPhamKhongCoTrongHoaDon;
+import Exception.SanPhamKhongCoTrongKho;
 import ThanhToan.ChucNangThanhToan;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -21,10 +24,12 @@ public class ThanhToanView extends javax.swing.JFrame {
      * Creates new form HoaDonViews
      */
     public ThanhToanView() {
+        this.TT = new ChucNangThanhToan();
+
         initComponents();
         this.setLocationRelativeTo(null);
-        ChucNangThanhToan TT = new ChucNangThanhToan();
         TAHoaDon.setEditable(false);
+        showResultHD();
     }
 
     @SuppressWarnings("unchecked")
@@ -197,27 +202,25 @@ public class ThanhToanView extends javax.swing.JFrame {
             } catch (Exception e) {
                 throw new ChuaNhapDuThongTin();
             }
-            System.out.println("tung");
             this.TT.themSanPham(spThem, soLuongSpThem);
-            System.out.println("tung");
         } catch (ChuaNhapDuThongTin e) {
             JFrame frame = new JFrame("");
             JOptionPane.showMessageDialog(frame,
                     "Chưa nhập đủ thông tin!",
                     "",
                     JOptionPane.ERROR_MESSAGE);
-//        } catch (SanPhamKhongCoTrongKho e) {
-//            JFrame frame = new JFrame("");
-//            JOptionPane.showMessageDialog(frame,
-//                    "Sản phẩm không có trong kho!",
-//                    "",
-//                    JOptionPane.ERROR_MESSAGE);
-//        } catch (KhongDuSoSanPhamYeuCau e) {
-//            JFrame frame = new JFrame("");
-//            JOptionPane.showMessageDialog(frame,
-//                    "Trong kho không đủ số sản phẩm yêu cầu!",
-//                    "",
-//                    JOptionPane.ERROR_MESSAGE);
+        } catch (SanPhamKhongCoTrongKho e) {
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,
+                    "Sản phẩm không có trong kho!",
+                    "",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (KhongDuSoSanPhamYeuCau e) {
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,
+                    "Trong kho không đủ số sản phẩm yêu cầu!",
+                    "",
+                    JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             System.out.println(e.getClass());
             JFrame frame = new JFrame("");
@@ -226,50 +229,56 @@ public class ThanhToanView extends javax.swing.JFrame {
                     "",
                     JOptionPane.ERROR_MESSAGE);
         } finally {
-//            this.showResultHD();
+            this.showResultHD();
         }
     }//GEN-LAST:event_BtnThemSPHDActionPerformed
 
     private void BTNBotSPHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNBotSPHDActionPerformed
         // TODO add your handling code here:
-//        int i = 0;
-//        try {
-//            for (; i < HD.getDanhSachSanPham().size(); i++) {
-//                if (TFtenSanPhamHD.getText().equals(HD.getDanhSachSanPham().get(i))) {
-//                    if (Integer.parseInt(TFsoluongHD.getText()) > HD.getDanhSachSoLuong().get(i)) {
-//                        JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-//                        JOptionPane.showMessageDialog(frame,
-//                                "Số lượng sản phẩm muốn bỏ ra vượt quá số lượng sản phẩm đã thêm!",
-//                                "",
-//                                JOptionPane.ERROR_MESSAGE);
-//                        return;
-//                    } else {
-//                        break;
-//                    }
-//                }
-//            }
-//        } catch (Exception e) {
-//            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-//            JOptionPane.showMessageDialog(frame,
-//                    "Chưa nhập đủ thông tin!",
-//                    "",
-//                    JOptionPane.ERROR_MESSAGE);
-//            return;
-//        }
-//        if (i == HD.getDanhSachSanPham().size()) {
-//            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-//            JOptionPane.showMessageDialog(frame,
-//                    "Không có sản phẩm!",
-//                    "",
-//                    JOptionPane.ERROR_MESSAGE);
-//            return;
-//        }
-//        HD.botSanPham(HD.getDanhSachSanPham().get(i), Integer.parseInt(TFsoluongHD.getText()), HD.getDanhSachGia().get(i));
-//        showResultHD();
+        try {
+            String spThem;
+            int soLuongSpThem;
+            try {
+                spThem = TFtenSanPhamHD.getText();
+                soLuongSpThem = Integer.parseInt(TFsoluongHD.getText());
+            } catch (Exception e) {
+                throw new ChuaNhapDuThongTin();
+            }
+            this.TT.botSanPham(spThem, soLuongSpThem);
+        } catch (ChuaNhapDuThongTin e) {
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,
+                    "Chưa nhập đủ thông tin!",
+                    "",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (SanPhamKhongCoTrongHoaDon e) {
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,
+                    "Sản phẩm không có sẵn trong hóa đơn!",
+                    "",
+                    JOptionPane.ERROR_MESSAGE);
+
+        } catch (KhongDuSoSanPhamYeuCau e) {
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,
+                    "Không đủ số sản phẩm yêu cầu!",
+                    "",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            System.out.println(e.getClass());
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,
+                    "Error!",
+                    "",
+                    JOptionPane.ERROR_MESSAGE);
+        } finally {
+            this.showResultHD();
+        }
     }//GEN-LAST:event_BTNBotSPHDActionPerformed
 
     private void BtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackActionPerformed
         // TODO add your handling code here:
+        TT.huy();
         JFrame MainViews = new MainViews();
         this.setVisible(false);
         MainViews.setVisible(true);
@@ -277,6 +286,15 @@ public class ThanhToanView extends javax.swing.JFrame {
 
     private void BtnInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInActionPerformed
 //        // TODO add your handling code here:
+        // Them vao SK.DAT
+        // In ra man hinh cua so hoa don
+        JFrame HDView = new HoaDonView2(this.TT.getHD());
+        HDView.setVisible(true);
+
+        this.setVisible(false);
+        JFrame MainViews = new MainViews();
+        MainViews.setVisible(true);
+
 //        for (int i = 0; i < HD.getDanhSachSanPham().size(); i++) {
 //            SanPham sp = null;
 //            for (int j = 0; j < this.list_kho.size(); j++) {
@@ -303,11 +321,11 @@ public class ThanhToanView extends javax.swing.JFrame {
 
     private void showResultHD() {
         String text = "";
-        text += TT.getHD().ngayThanhToan();
-        text += "\nDanh sach san pham:";
+        text += "Danh sach san pham:";
 
         for (int i = 0; i < TT.getHD().getDanhSachSanPham().size(); ++i) {
-            text = text + "\n" + (i + 1) + ". " + TT.getHD().getDanhSachSanPham().get(i) + "*" + TT.getHD().getDanhSachSoLuong().get(i);
+            text = text + "\n" + (i + 1) + ". " + TT.getHD().getDanhSachSanPham().get(i) + "\t* " + TT.getHD().getDanhSachSoLuong().get(i);
+            text = text + "\n       " + this.TT.getHD().getDanhSachGia().get(i) + "\t* " + this.TT.getHD().getDanhSachSoLuong().get(i) + " = " + (this.TT.getHD().getDanhSachGia().get(i) * this.TT.getHD().getDanhSachSoLuong().get(i));
         }
         text += "\n-----------------------------------";
         text += "\n" + "Tong gia tri hoa don: " + TT.getHD().tongHoaDon();
