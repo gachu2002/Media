@@ -12,7 +12,7 @@ public class ChiPhiViews extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         PanelView.setLayout(new BorderLayout());
-        PanelView.add(new ChiPhiNhanVien());
+//        PanelView.add(new ChiPhiNhanVien());
     }
 
     /**
@@ -26,7 +26,6 @@ public class ChiPhiViews extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         BtnSanPham = new javax.swing.JButton();
-        BtnNhanVien = new javax.swing.JButton();
         BtnBack = new javax.swing.JButton();
         PanelView = new javax.swing.JPanel();
 
@@ -42,14 +41,6 @@ public class ChiPhiViews extends javax.swing.JFrame {
             }
         });
 
-        BtnNhanVien.setBackground(new java.awt.Color(255, 51, 102));
-        BtnNhanVien.setText("NHÂN VIÊN");
-        BtnNhanVien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnNhanVienActionPerformed(evt);
-            }
-        });
-
         BtnBack.setText("Back");
         BtnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,25 +52,21 @@ public class ChiPhiViews extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 93, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(BtnSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
-                .addComponent(BtnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(47, 47, 47)
                 .addComponent(BtnSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PanelViewLayout = new javax.swing.GroupLayout(PanelView);
@@ -115,15 +102,6 @@ public class ChiPhiViews extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BtnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNhanVienActionPerformed
-        // TODO add your handling code here:
-        PanelView.removeAll();
-        PanelView.setLayout(new BorderLayout());
-        PanelView.add(new ChiPhiNhanVien());
-        PanelView.validate();
-        PanelView.repaint();
-    }//GEN-LAST:event_BtnNhanVienActionPerformed
 
     private void BtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackActionPerformed
         // TODO add your handling code here:
@@ -178,7 +156,6 @@ public class ChiPhiViews extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBack;
-    private javax.swing.JButton BtnNhanVien;
     private javax.swing.JButton BtnSanPham;
     private javax.swing.JPanel PanelView;
     private javax.swing.JPanel jPanel1;

@@ -4,10 +4,11 @@ import IO.IO;
 import NhanVien.NVPartTime;
 import NhanVien.NhanVien;
 import NhanVien.NhanVienCoDinh;
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-public class ChiPhiNhanVien extends javax.swing.JPanel {
+public class ChiPhiNhanVien extends javax.swing.JFrame {
 //    private ArrayList<SanPham> list;
 
     private ArrayList<NhanVien> list_NhanVien;
@@ -18,6 +19,8 @@ public class ChiPhiNhanVien extends javax.swing.JPanel {
 
     public ChiPhiNhanVien() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setLayout(new BorderLayout());
 //        list = new ArrayList<> (); // list = io.docSP();
         list_NhanVien = new ArrayList<>();
         model = (DefaultTableModel) jTable1.getModel();

@@ -37,12 +37,13 @@ public class MainViews extends javax.swing.JFrame {
         BtnKhoHang = new javax.swing.JButton();
         BtnHoaDon = new javax.swing.JButton();
         BtnChiPhi = new javax.swing.JButton();
+        BtnNhanVien = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tieudemain.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tieudemain.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tieudemain.setText("TÔI CÓ THỂ GIÚP GÌ CHO BẠN");
+        tieudemain.setText("Hệ thống quản lý cửa hàng MediaOne");
         tieudemain.setAlignmentX(0.5F);
 
         BtnKhoHang.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -72,31 +73,43 @@ public class MainViews extends javax.swing.JFrame {
             }
         });
 
+        BtnNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BtnNhanVien.setForeground(new java.awt.Color(153, 153, 0));
+        BtnNhanVien.setText("QUẢN LÝ NHÂN VIÊN");
+        BtnNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNhanVienActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(230, 230, 230)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tieudemain, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnKhoHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnChiPhi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tieudemain, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(BtnKhoHang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnHoaDon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnChiPhi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(248, 248, 248))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(tieudemain, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addGap(48, 48, 48)
+                .addComponent(tieudemain, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(BtnKhoHang, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                .addGap(43, 43, 43)
+                .addGap(27, 27, 27)
                 .addComponent(BtnHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
                 .addGap(43, 43, 43)
                 .addComponent(BtnChiPhi, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(BtnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                .addGap(38, 38, 38))
         );
 
         tieudemain.getAccessibleContext().setAccessibleDescription("");
@@ -127,6 +140,14 @@ public class MainViews extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BtnHoaDonActionPerformed
 
+    private void BtnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNhanVienActionPerformed
+        // TODO add your handling code here:
+        JFrame NhanVienViews = new ChiPhiNhanVien();
+        NhanVienViews.setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_BtnNhanVienActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -135,6 +156,7 @@ public class MainViews extends javax.swing.JFrame {
     private javax.swing.JButton BtnChiPhi;
     private javax.swing.JButton BtnHoaDon;
     private javax.swing.JButton BtnKhoHang;
+    private javax.swing.JButton BtnNhanVien;
     private javax.swing.JLabel tieudemain;
     // End of variables declaration//GEN-END:variables
 }
