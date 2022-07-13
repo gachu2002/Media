@@ -12,21 +12,17 @@ import Exception.KhongDuSoSanPhamYeuCau;
 import Exception.SanPhamKhongCoTrongHoaDon;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class HoaDon {
 
-    private int day;
-    private int month;
-    private int year;
+    private LocalDateTime ngay;
     private ArrayList<String> danhSachSanPham;
     private ArrayList<Integer> danhSachSoLuong;
     private ArrayList<Double> danhSachGia;
 
     public HoaDon() {
-        LocalDateTime thoiDiemHienTai = LocalDateTime.now();
-        this.day = thoiDiemHienTai.getDayOfMonth();
-        this.month = thoiDiemHienTai.getMonthValue();
-        this.year = thoiDiemHienTai.getYear();
+        this.ngay = LocalDateTime.now();
         this.danhSachSanPham = new ArrayList<>();
         this.danhSachSoLuong = new ArrayList<>();
         this.danhSachGia = new ArrayList<>();
@@ -110,30 +106,6 @@ public class HoaDon {
     }
 
     public String ngayThanhToan() {
-        return this.day + "/" + this.month + "/" + this.year;
-    }
-
-    public int getDay() {
-        return this.day;
-    }
-
-    public int getMonth() {
-        return this.month;
-    }
-
-    public int getYear() {
-        return this.year;
-    }
-
-    public void setDay(int dayOfMonth) {
-        this.day = dayOfMonth;
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
+        return this.ngay.format(DateTimeFormatter.ISO_DATE);
     }
 }

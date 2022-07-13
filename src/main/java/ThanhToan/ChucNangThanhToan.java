@@ -5,6 +5,7 @@
 package ThanhToan;
 
 import DoanhThu.SuKien;
+import DoanhThu.SuKienMotLan;
 import Exception.*;
 import IO.IO;
 import KhoHang.SanPham;
@@ -19,12 +20,12 @@ public class ChucNangThanhToan {
     private HoaDon HD;
     private IO IO;
     private ArrayList<SanPham> list_kho;
-    private ArrayList<SuKien> list_SuKien;
-
+    private ArrayList<SuKienMotLan> list_SuKien;
+// thêm âm sản phẩm: báo lỗi
     public ChucNangThanhToan() {
         this.IO = new IO();
         this.list_kho = this.IO.docSP();
-        this.list_SuKien = this.IO.docSK(list_kho);
+        this.list_SuKien = this.IO.docSKMotLan();
         this.HD = new HoaDon();
     }
 

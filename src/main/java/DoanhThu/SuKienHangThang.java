@@ -8,6 +8,16 @@ package DoanhThu;
  *
  * @author XPS
  */
-public class SuKienHangThang extends SuKienDinhKy {
+public class SuKienHangThang extends SuKienDinhKy implements ChinhNgay {
     
+    private int ngay;
+    
+    public SuKienHangThang(int ngay){
+        super();
+        this.ngay = ngay;
+    }
+    
+    public void chinhNgay(){
+        this.ngayTiepTheo = this.ngayTiepTheo.plusMonths(1);
+    }
 }
