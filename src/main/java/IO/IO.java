@@ -8,6 +8,7 @@ import NhanVien.NhanVien;
 import NhanVien.NhanVienCoDinh;
 import KhoHang.SanPham;
 import DoanhThu.SuKien;
+import DoanhThu.SuKienMotLan;
 import ThongBao.ThongBao;
 
 import java.io.File;
@@ -112,46 +113,73 @@ public class IO {
         return list;
     }
 
-    public void ghiSK(ArrayList<SuKien> list) {
-        try ( PrintWriter pw = new PrintWriter(new File("src\\main\\java\\IO\\SK.DAT"))) {
-            for (SuKien sk : list) {
-                pw.println(sk.getSp().getTensanpham());
-                pw.println(sk.getNgay());
-                pw.println(sk.getHanhdong());
-                pw.println(sk.getSoluong_hd());
+    public void ghiSKMotLan(ArrayList<SuKienMotLan> dsSuKien) {
+        try ( PrintWriter pw = new PrintWriter(new File("src\\main\\java\\IO\\dsSuKien.csv"))) {
+            for (SuKienMotLan sk : dsSuKien) {
+                pw.print(sk.getNgay() + "," + sk.getTen() + "," + sk.getLoai() + "," + sk.getGiaTri());
             }
         } catch (Exception e) {
             System.out.println("got an exception!");
         }
     }
 
-    public ArrayList<SuKien> docSK(ArrayList<SanPham> list_sp) {
-        ArrayList<SuKien> list = new ArrayList<>();
-        try ( Scanner sc = new Scanner(new File("src\\main\\java\\IO\\SK.DAT"))) {
+    public ArrayList<SuKienMotLan> docSKMotLan() {
+        ArrayList<SuKienMotLan> dsSuKienMotLan = new ArrayList<>();
+        try ( Scanner sc = new Scanner(new File("src\\main\\java\\IO\\dsSuKien.csv"))) {
+            sc.useDelimiter("\n");
             while (sc.hasNext()) {
-                SuKien sk = new SuKien();
-                SanPham sp = null;
-                String tenSanPham = sc.nextLine();
-
-                for (int i = 0; i < list_sp.size(); i++) {
-                    if (list_sp.get(i).getTensanpham().equals(tenSanPham)) {
-                        sp = list_sp.get(i);
-                        break;
-                    }
-                }
-                sk.setSp(sp);
-
-                Date ngay = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US).parse(sc.nextLine());
-                sk.setNgay(ngay);
-                sk.setHanhdong(sc.nextLine());
-                sk.setSoluong_hd(Integer.parseInt(sc.nextLine()));
-                list.add(sk);
+                String nextLine = sc.next();
+                String cacTruong[] = nextLine.split(",");
+                SuKienMotLan skml = new SuKienMotLan(cacTruong[0], cacTruong[1], cacTruong[2], Integer.parseInt(cacTruong[3]);
+                dsSuKienMotLan.add(skml);
             }
+            sc.close();
         } catch (Exception e) {
             System.out.println("got an exception");
         }
-        return list;
+        return dsSuKienMotLan;
+
     }
+//    public void ghiSK(ArrayList<SuKien> list) {
+//        try ( PrintWriter pw = new PrintWriter(new File("src\\main\\java\\IO\\SK.DAT"))) {
+//            for (SuKien sk : list) {
+//                pw.println(sk.getSp().getTensanpham());
+//                pw.println(sk.getNgay());
+//                pw.println(sk.getHanhdong());
+//                pw.println(sk.getSoluong_hd());
+//            }
+//        } catch (Exception e) {
+//            System.out.println("got an exception!");
+//        }
+//    }
+//
+//    public ArrayList<SuKien> docSK(ArrayList<SanPham> list_sp) {
+//        ArrayList<SuKien> list = new ArrayList<>();
+//        try ( Scanner sc = new Scanner(new File("src\\main\\java\\IO\\SK.DAT"))) {
+//            while (sc.hasNext()) {
+//                SuKien sk = new SuKien();
+//                SanPham sp = null;
+//                String tenSanPham = sc.nextLine();
+//
+//                for (int i = 0; i < list_sp.size(); i++) {
+//                    if (list_sp.get(i).getTensanpham().equals(tenSanPham)) {
+//                        sp = list_sp.get(i);
+//                        break;
+//                    }
+//                }
+//                sk.setSp(sp);
+//
+//                Date ngay = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US).parse(sc.nextLine());
+//                sk.setNgay(ngay);
+//                sk.setHanhdong(sc.nextLine());
+//                sk.setSoluong_hd(Integer.parseInt(sc.nextLine()));
+//                list.add(sk);
+//            }
+//        } catch (Exception e) {
+//            System.out.println("got an exception");
+//        }
+//        return list;
+//    }
 
     public void ghiNV(ArrayList<NhanVien> list) {
         try ( PrintWriter pw = new PrintWriter(new File("src\\main\\java\\IO\\NV.DAT"))) {
