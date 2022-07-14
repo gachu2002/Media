@@ -15,11 +15,11 @@ public class SuKienTheoChuKy extends SuKienDinhKy {
     private int soNgayMotChuKy;
 
     public SuKienTheoChuKy(String tenSK, String loaiSK, LocalDateTime ngayBatDau, int soNgayMotChuKy) {
-        super(tenSK, loaiSK, ngayBatDau);
+        super(ngayBatDau, tenSK, loaiSK);
         this.soNgayMotChuKy = soNgayMotChuKy;
     }
 
     public void chinhNgay() {
-        this.ngayTiepTheo = this.ngayTiepTheo.plusMonths(1);
+        this.ngayTiepTheo = this.ngayTiepTheo.plusDays(this.soNgayMotChuKy);
     }
 }

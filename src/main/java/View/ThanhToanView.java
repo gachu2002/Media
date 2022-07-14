@@ -285,38 +285,15 @@ public class ThanhToanView extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnBackActionPerformed
 
     private void BtnInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInActionPerformed
-//        // TODO add your handling code here:
-        // Them vao SK.DAT
-        // In ra man hinh cua so hoa don
+        // TODO add your handling code here:
+        this.TT.taoSuKien();
+        
         JFrame HDView = new HoaDonView(this.TT.getHD());
         HDView.setVisible(true);
 
         this.setVisible(false);
         JFrame MainViews = new MainViews();
         MainViews.setVisible(true);
-
-//        for (int i = 0; i < HD.getDanhSachSanPham().size(); i++) {
-//            SanPham sp = null;
-//            for (int j = 0; j < this.list_kho.size(); j++) {
-//                if (HD.getDanhSachSanPham().get(i).equals(this.list_kho.get(j).getTensanpham())) {
-//                    sp = this.list_kho.get(j);
-//                    break;
-//                }
-//            }
-//            if (sp == null) {
-//                return;
-//            }
-//            if (HD.getDanhSachSoLuong().get(i) < sp.getSoluong()) {
-//                Date ngay = new Date();
-//                SuKien sk = new SuKien(sp, ngay, "ban", sp.getSoluong() - HD.getDanhSachSoLuong().get(i));
-//// can mang su kien vi khi dung lenh xoa thi ta se ko co su kien nay
-//                sk.isRealSK();
-//                list_SuKien.add(sk);
-//            }
-//
-//        }
-//        IO.ghiSP(this.list_kho);
-//        IO.ghiSK(list_SuKien);
     }//GEN-LAST:event_BtnInActionPerformed
 
     private void showResultHD() {

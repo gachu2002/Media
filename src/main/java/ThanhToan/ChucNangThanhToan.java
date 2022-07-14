@@ -9,6 +9,7 @@ import DoanhThu.SuKienMotLan;
 import Exception.*;
 import IO.IO;
 import KhoHang.SanPham;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -22,6 +23,7 @@ public class ChucNangThanhToan {
     private ArrayList<SanPham> list_kho;
     private ArrayList<SuKienMotLan> list_SuKien;
 // thêm âm sản phẩm: báo lỗi
+
     public ChucNangThanhToan() {
         this.IO = new IO();
         this.list_kho = this.IO.docSP();
@@ -101,8 +103,11 @@ public class ChucNangThanhToan {
         throw new SanPhamKhongCoTrongHoaDon();
     }
 
-    public void inHoaDon() {
-
+    public void taoSuKien() {
+        IO IO = new IO();
+        ArrayList<SuKienMotLan> dsSK = IO.docSKMotLan();
+        dsSK.add(new SuKienMotLan(LocalDateTime.now(), "Bán hàng", "Bán", (int) this.HD.tongHoaDon()));
+        IO.ghiSKMotLan(dsSK);
     }
 
     public void huy() {

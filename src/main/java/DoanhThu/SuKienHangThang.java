@@ -15,7 +15,7 @@ public class SuKienHangThang extends SuKienDinhKy implements ChinhNgay {
     private int ngay;
 
     public SuKienHangThang(String tenSK, String loaiSK, int ngay) {
-        super(tenSK, loaiSK, LocalDateTime.now());
+        super(LocalDateTime.now(), tenSK, loaiSK);
         LocalDateTime homnay = LocalDateTime.now();
         if (ngay > homnay.getDayOfMonth()) {
             this.ngayTiepTheo.plusDays(ngay - homnay.getDayOfMonth());
