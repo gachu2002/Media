@@ -21,17 +21,18 @@ public class ChucNangThanhToan {
     private HoaDon HD;
     private IO IO;
     private ArrayList<SanPham> list_kho;
-    private ArrayList<SuKienMotLan> list_SuKien;
 // thêm âm sản phẩm: báo lỗi
 
     public ChucNangThanhToan() {
         this.IO = new IO();
-        this.list_kho = this.IO.docSP();
-        this.list_SuKien = this.IO.docSKMotLan();
+        this.list_kho = this.IO.docSP();;
         this.HD = new HoaDon();
     }
 
-    public void themSanPham(String sanPham, int soLuong) throws SanPhamKhongCoTrongKho, KhongDuSoSanPhamYeuCau {
+    public void themSanPham(String sanPham, int soLuong) throws SanPhamKhongCoTrongKho, KhongDuSoSanPhamYeuCau, GiaTriKhongHopLe {
+        if (soLuong <= 0) {
+            throw new GiaTriKhongHopLe();
+        }
         ArrayList<String> dsSanPham = this.HD.getDanhSachSanPham();
         ArrayList<Double> dsGia = this.HD.getDanhSachGia();
         ArrayList<Integer> dsSoLuong = this.HD.getDanhSachSoLuong();
@@ -71,7 +72,10 @@ public class ChucNangThanhToan {
 
     }
 
-    public void botSanPham(String sanPham, int soLuong) throws SanPhamKhongCoTrongHoaDon, KhongDuSoSanPhamYeuCau {
+    public void botSanPham(String sanPham, int soLuong) throws SanPhamKhongCoTrongHoaDon, KhongDuSoSanPhamYeuCau, GiaTriKhongHopLe {
+        if (soLuong <= 0) {
+            throw new GiaTriKhongHopLe();
+        }
         ArrayList<String> dsSanPham = this.HD.getDanhSachSanPham();
         ArrayList<Double> dsGia = this.HD.getDanhSachGia();
         ArrayList<Integer> dsSoLuong = this.HD.getDanhSachSoLuong();
@@ -108,6 +112,28 @@ public class ChucNangThanhToan {
         ArrayList<SuKienMotLan> dsSK = IO.docSKMotLan();
         dsSK.add(new SuKienMotLan(LocalDateTime.now(), "Bán hàng", "Bán", (int) this.HD.tongHoaDon()));
         IO.ghiSKMotLan(dsSK);
+    }
+
+    public void xoaSanPham(String sanPham) throws SanPhamKhongCoTrongHoaDon {
+        ArrayList<String> dsSanPham = this.HD.getDanhSachSanPham();
+        ArrayList<Double> dsGia = this.HD.getDanhSachGia();
+        ArrayList<Integer> dsSoLuong = this.HD.getDanhSachSoLuong();
+
+        for (int i = 0; i < dsSanPham.size(); ++i) {
+            if (dsSanPham.get(i).equals(sanPham)) {
+                for (SanPham sp : list_kho) {
+                    if (sp.getTensanpham().equals(dsSanPham.get(i))) {
+                        sp.setSoLuong(sp.getSoluong() + dsSoLuong.get(i));
+                        break;
+                    }
+                }
+                dsSanPham.remove(i);
+                dsGia.remove(i);
+                dsSoLuong.remove(i);
+                return;
+            }
+        }
+        throw new SanPhamKhongCoTrongHoaDon();
     }
 
     public void huy() {

@@ -18,7 +18,7 @@ public class SuKienDinhKy extends SuKien {
 
     protected LocalDateTime ngayTiepTheo;
 
-    public SuKienDinhKy(String tenSK, String loaiSK, LocalDateTime ngay) {
+    public SuKienDinhKy(LocalDateTime ngay, String tenSK, String loaiSK) {
         super(tenSK, loaiSK);
         this.ngayTiepTheo = ngay;
     }
@@ -30,4 +30,7 @@ public class SuKienDinhKy extends SuKien {
         IO.ghiThongBao(dsThongBao);
     }
 
+    public LocalDateTime getNgayTiepTheo(){
+        return this.ngayTiepTheo;
+    }
 }
