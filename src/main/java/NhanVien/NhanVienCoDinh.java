@@ -38,13 +38,8 @@ public class NhanVienCoDinh extends NhanVien {
     public double tinhLuong() {
         return luongCoBan * heSoLuong;
     }
-
-    @Override
-    public void inThongTin() {
-        System.out.println("Nhan vien co dinh:");
-        System.out.println("Ho va ten: " + super.getTenNhanVien());
-        System.out.println("Vi tri: " + getViTri());
-        System.out.println("Luong: " + tinhLuong());
+    public String getLoaiNhanVien(){
+       return "Full-time";
     }
 
     public NhanVienCoDinh(String name, String viTri, double heSoLuong) {

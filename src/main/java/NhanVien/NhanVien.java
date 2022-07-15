@@ -16,7 +16,6 @@ public abstract class NhanVien {
     }
 
     public abstract double tinhLuong();
-
-    public abstract void inThongTin();
+    public abstract String getLoaiNhanVien();
 
 }
