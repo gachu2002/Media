@@ -146,7 +146,7 @@ public class MainViews extends javax.swing.JFrame {
 
     private void BtnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNhanVienActionPerformed
         // TODO add your handling code here:
-        JFrame NhanVienViews = new ChiPhiNhanVien();
+        JFrame NhanVienViews = new NhanVienDuc();
         NhanVienViews.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnNhanVienActionPerformed

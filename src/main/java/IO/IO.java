@@ -177,13 +177,13 @@ public class IO {
         try ( PrintWriter pw = new PrintWriter(new File("src\\main\\java\\IO\\NV.DAT"))) {
             for (NhanVien nv : list) {
                 if (nv instanceof NhanVienCoDinh) {
-                    pw.println(0);
+                    pw.println(((NhanVienCoDinh)nv).getLoaiNhanVien());
                     pw.println(nv.getTenNhanVien());
                     pw.println(((NhanVienCoDinh) nv).getViTri());
                     pw.println(((NhanVienCoDinh) nv).getLuongCoBan());
                     pw.println(((NhanVienCoDinh) nv).getHeSoLuong());
                 } else if (nv instanceof NVPartTime) {
-                    pw.println(1);
+                    pw.println(((NVPartTime)nv).getLoaiNhanVien());
                     pw.println(nv.getTenNhanVien());
                     pw.println(((NVPartTime) nv).getThoiGianLamViec());
                     pw.println(((NVPartTime) nv).getLuongTheoGio());
