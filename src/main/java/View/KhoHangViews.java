@@ -397,7 +397,7 @@ public class KhoHangViews extends javax.swing.JFrame {
         for (int i = 0; i < listSanPham.size(); i++) {
             if (listSanPham.get(i).getTensanpham().equals(TFTen.getText())) {
                 sp = listSanPham.get(i);
-//              listSanPham.add(sp);
+                sp.setSoLuong(sp.getSoluong()+Integer.parseInt(TFSoLuongNhap.getText()));
                 key = 1;
                 break;
             }
@@ -409,6 +409,7 @@ public class KhoHangViews extends javax.swing.JFrame {
                 sp.setTensanpham(TFTen.getText());
                 sp.setGianhap(Integer.parseInt(TFGiaNhap.getText()));
                 sp.setGiaban(Integer.parseInt(TFGiaBan.getText()));
+                sp.setSoLuong(Integer.parseInt(TFSoLuongNhap.getText()));
                 ((Sach) sp).setTentacgia(TFTenTacGia.getText());
                 ((Sach) sp).setNhaxuatban(TFNhaXuatBan.getText());
                 ((Sach) sp).setTheloai(TFTheLoaiSach.getText());
@@ -418,6 +419,7 @@ public class KhoHangViews extends javax.swing.JFrame {
                 sp.setTensanpham(TFTen.getText());
                 sp.setGianhap(Integer.parseInt(TFGiaNhap.getText()));
                 sp.setGiaban(Integer.parseInt(TFGiaBan.getText()));
+                sp.setSoLuong(Integer.parseInt(TFSoLuongNhap.getText()));
                 ((DiaNhac) sp).setTencasi(TFTenCaSi.getText());
                 ((DiaNhac) sp).setTheloai(TFTheLoaiDN.getText());
                 ((DiaNhac) sp).setNamphathanh(Integer.parseInt(TFNamPhatHanhDN.getText()));
@@ -426,6 +428,7 @@ public class KhoHangViews extends javax.swing.JFrame {
                 sp.setTensanpham(TFTen.getText());
                 sp.setGianhap(Integer.parseInt(TFGiaNhap.getText()));
                 sp.setGiaban(Integer.parseInt(TFGiaBan.getText()));
+                sp.setSoLuong(Integer.parseInt(TFSoLuongNhap.getText()));
                 ((DiaPhim) sp).setDaodien(TFDaoDien.getText());
                 ((DiaPhim) sp).setDienvien(TFDienVien.getText());
                 ((DiaPhim) sp).setTheloai(TFTheLoaiDP.getText());

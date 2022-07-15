@@ -127,9 +127,14 @@ public class MainViews extends javax.swing.JFrame {
 
     private void BtnChiPhiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnChiPhiActionPerformed
         // TODO add your handling code here:
-        JFrame ChiPhiViews = new ChiPhiViews();
-        ChiPhiViews.setVisible(true);
+        
+        JFrame LichSuView = new LichSuView();
+        LichSuView.setVisible(true);
         this.setVisible(false);
+        
+//        JFrame ChiPhiViews = new ChiPhiViews();
+//        ChiPhiViews.setVisible(true);
+//        this.setVisible(false);
     }//GEN-LAST:event_BtnChiPhiActionPerformed
 
     private void BtnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHoaDonActionPerformed
@@ -137,8 +142,6 @@ public class MainViews extends javax.swing.JFrame {
         JFrame HoaDonViews = new ThanhToanView();
         HoaDonViews.setVisible(true);
         this.setVisible(false);
-        //MainViews.setVisible(false);
-
     }//GEN-LAST:event_BtnHoaDonActionPerformed
 
     private void BtnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNhanVienActionPerformed
@@ -146,7 +149,6 @@ public class MainViews extends javax.swing.JFrame {
         JFrame NhanVienViews = new ChiPhiNhanVien();
         NhanVienViews.setVisible(true);
         this.setVisible(false);
-
     }//GEN-LAST:event_BtnNhanVienActionPerformed
 
     /**

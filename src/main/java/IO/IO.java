@@ -113,7 +113,7 @@ public class IO {
     public void ghiSKMotLan(ArrayList<SuKienMotLan> dsSuKien) {
         try ( PrintWriter pw = new PrintWriter(new File("src\\main\\java\\IO\\dsSuKienMotLan.csv"))) {
             for (SuKienMotLan sk : dsSuKien) {
-                pw.print(sk.getDate().toString() + "," + sk.getTenSuKien() + "," + sk.getLoaiSuKien() + "," + sk.getGiatri());
+                pw.print(sk.getDate().toString() + "," + sk.getTenSuKien() + "," + sk.getLoaiSuKien() + "," + sk.getGiatri() + "\n");
             }
         } catch (Exception e) {
             System.out.println("got an exception!");

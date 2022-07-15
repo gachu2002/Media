@@ -3,11 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
 
-import ThongBao.QuanLyThongBao;
-import ThongBao.ThongBao;
 import View.MainViews;
 import javax.swing.JFrame;
-import IO.IO;
 
 /**
  *
