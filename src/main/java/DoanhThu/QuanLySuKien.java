@@ -22,7 +22,7 @@ public class QuanLySuKien {
     }
 
     public ArrayList<SuKienMotLan> getThongKeSuKien(LocalDateTime start, LocalDateTime end) {
-        ArrayList<SuKienMotLan> dsThongKeSuKien = new ArrayList<SuKienMotLan>();
+        ArrayList<SuKienMotLan> dsThongKeSuKien = new ArrayList<>();
         for (SuKienMotLan obj : dsSuKien) {
             if ((obj.getDate()).compareTo(start) >= 0 && (obj.getDate()).compareTo(end) < 0) {
                 dsThongKeSuKien.add(obj);

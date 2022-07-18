@@ -28,15 +28,9 @@ public class NVPartTime extends NhanVien {
     public double tinhLuong() {
         return this.thoiGianLamViec * luongTheoGio;
     }
-
-    @Override
-    public void inThongTin() {
-        System.out.println("Nhan vien Past-Time:");
-        System.out.println("Ho va ten: " + super.getTenNhanVien());
-        System.out.println("So gio lam viec: " + this.getThoiGianLamViec());
-        System.out.println("Luong: " + tinhLuong());
+    public String getLoaiNhanVien(){
+       return "Part-time";
     }
-
     public NVPartTime(String name, double thoiGianLamViec) {
         setTenNhanVien(name);
         this.thoiGianLamViec = thoiGianLamViec;
