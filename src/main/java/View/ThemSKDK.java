@@ -7,6 +7,7 @@ package View;
 import DoanhThu.QuanLySuKien;
 import DoanhThu.SuKienDinhKy;
 import DoanhThu.SuKienHangThang;
+import DoanhThu.SuKienTheoChuKy;
 import java.time.LocalDateTime;
 
 /**
@@ -22,7 +23,7 @@ public class ThemSKDK extends javax.swing.JFrame {
 
     public ThemSKDK() {
         initComponents();
-        this.setLocationRelativeTo(null); 
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -208,6 +209,10 @@ public class ThemSKDK extends javax.swing.JFrame {
         if (isSKHT.isSelected()) {
             SuKienHangThang skht = new SuKienHangThang(tenSK.getText(), loaiSK.getText(), Integer.parseInt(ngayChuKy.getText()));
             qlsk.themSKDK((SuKienDinhKy) skht);
+        } else if (isSKTCK.isSelected()) {
+            LocalDateTime ngayBatDau = LocalDateTime.of(Integer.parseInt(nam.getText()), Integer.parseInt(thang.getText()), Integer.parseInt(ngay.getText()), 0, 0, 0);
+            SuKienTheoChuKy sktck = new SuKienTheoChuKy(tenSK.getText(), loaiSK.getText(), ngayBatDau, Integer.parseInt(ngayChuKy.getText()));
+            qlsk.themSKDK((SuKienDinhKy) sktck);
         }
         BackActionPerformed(evt);
     }//GEN-LAST:event_themActionPerformed
