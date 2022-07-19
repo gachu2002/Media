@@ -21,8 +21,8 @@ public class MainViews extends javax.swing.JFrame {
      */
     public MainViews() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(null);      
+//        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**

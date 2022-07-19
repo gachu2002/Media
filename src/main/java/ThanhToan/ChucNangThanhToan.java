@@ -19,13 +19,9 @@ import java.util.ArrayList;
 public class ChucNangThanhToan {
 
     private HoaDon HD;
-    private IO IO;
-    private ArrayList<SanPham> list_kho;
 // thêm âm sản phẩm: báo lỗi
 
     public ChucNangThanhToan() {
-        this.IO = new IO();
-        this.list_kho = this.IO.docSP();;
         this.HD = new HoaDon();
     }
 
@@ -38,6 +34,8 @@ public class ChucNangThanhToan {
         ArrayList<Integer> dsSoLuong = this.HD.getDanhSachSoLuong();
 
         boolean spCoTrongKho = false;
+        IO io = new IO();
+        ArrayList<SanPham> list_kho = io.docSP();
         for (int j = 0; j < list_kho.size(); j++) {
             SanPham sp = list_kho.get(j);
             if (sp.getTensanpham().equals(sanPham)) {
@@ -62,7 +60,7 @@ public class ChucNangThanhToan {
                 } else {
                     sp.setSoLuong(sp.getSoluong() - soLuong);
                 }
-                IO.ghiSP(list_kho);
+                io.ghiSP(list_kho);
                 spCoTrongKho = true;
             }
         }
@@ -86,6 +84,8 @@ public class ChucNangThanhToan {
                 if (soLuong > soLuongHienTai) {
                     throw new KhongDuSoSanPhamYeuCau();
                 }
+                IO io = new IO();
+                ArrayList<SanPham> list_kho = io.docSP();
                 for (int j = 0; j < list_kho.size(); ++j) {
                     SanPham sp = list_kho.get(j);
                     if (sp.getTensanpham().equals(sanPham)) {
@@ -98,7 +98,7 @@ public class ChucNangThanhToan {
                             sp.setSoLuong(sp.getSoluong() + soLuong);
                             dsSoLuong.set(i, soLuongHienTai - soLuong);
                         }
-                        IO.ghiSP(list_kho);
+                        io.ghiSP(list_kho);
                     }
                 }
                 return;
@@ -121,6 +121,8 @@ public class ChucNangThanhToan {
 
         for (int i = 0; i < dsSanPham.size(); ++i) {
             if (dsSanPham.get(i).equals(sanPham)) {
+                IO io = new IO();
+                ArrayList<SanPham> list_kho = io.docSP();
                 for (SanPham sp : list_kho) {
                     if (sp.getTensanpham().equals(dsSanPham.get(i))) {
                         sp.setSoLuong(sp.getSoluong() + dsSoLuong.get(i));
@@ -140,6 +142,8 @@ public class ChucNangThanhToan {
         ArrayList<String> dsSanPham = this.HD.getDanhSachSanPham();
         ArrayList<Double> dsGia = this.HD.getDanhSachGia();
         ArrayList<Integer> dsSoLuong = this.HD.getDanhSachSoLuong();
+        IO io = new IO();
+        ArrayList<SanPham> list_kho = io.docSP();
 
         for (int i = 0; i < dsSanPham.size(); ++i) {
             for (int j = 0; j < list_kho.size(); ++j) {
@@ -150,7 +154,7 @@ public class ChucNangThanhToan {
                 }
             }
         }
-        IO.ghiSP(list_kho);
+        io.ghiSP(list_kho);
     }
 
     public HoaDon getHD() {

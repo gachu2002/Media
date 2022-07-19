@@ -1,6 +1,7 @@
 package IO;
 
 import DoanhThu.SuKienDinhKy;
+import DoanhThu.SuKienHangThang;
 import KhoHang.DiaNhac;
 import KhoHang.DiaPhim;
 import KhoHang.Sach;
@@ -9,6 +10,7 @@ import NhanVien.NhanVien;
 import NhanVien.NhanVienCoDinh;
 import KhoHang.SanPham;
 import DoanhThu.SuKienMotLan;
+import DoanhThu.SuKienTheoChuKy;
 import ThongBao.ThongBao;
 
 import java.io.File;
@@ -145,7 +147,18 @@ public class IO {
     public void ghiSKDinhKy(ArrayList<SuKienDinhKy> dsSuKien) {
         try ( PrintWriter pw = new PrintWriter(new File("src\\main\\java\\IO\\dsSuKienDinhKy.csv"))) {
             for (SuKienDinhKy sk : dsSuKien) {
-                pw.print(sk.getNgayTiepTheo().toString() + "," + sk.getTenSuKien() + "," + sk.getLoaiSuKien());
+                if (sk instanceof SuKienHangThang ){
+                    pw.print("0,"+ sk.getNgayTiepTheo().toString() + "," + sk.getTenSuKien() + "," + sk.getLoaiSuKien()
+                            + "," + ((SuKienHangThang)sk).getNgay());
+                }
+                else if (sk instanceof SuKienTheoChuKy){
+                   pw.print("1,"+sk.getNgayTiepTheo().toString() + "," + sk.getTenSuKien() + "," + sk.getLoaiSuKien()
+                            + "," + ((SuKienTheoChuKy)sk).getSoNgayMotChuKy()); 
+                }
+                else{
+                    System.out.println("error");
+                }
+                
             }
         } catch (Exception e) {
             System.out.println("got an exception!");
@@ -159,11 +172,23 @@ public class IO {
             while (sc.hasNext()) {
                 String nextLine = sc.next();
                 String cacTruong[] = nextLine.split(",");
-                LocalDateTime ngayTiepTheo = LocalDateTime.parse(cacTruong[0]);
-                String tenSK = cacTruong[1];
-                String loaiSK = cacTruong[2];
-                SuKienDinhKy skdk = new SuKienDinhKy(ngayTiepTheo, tenSK, loaiSK);
-                dsSuKien.add(skdk);
+                LocalDateTime ngayTiepTheo = LocalDateTime.parse(cacTruong[1]);
+                String tenSK = cacTruong[2];
+                String loaiSK = cacTruong[3];
+                int songay = Integer.parseInt(cacTruong[4]);
+                int loai = Integer.parseInt(cacTruong[0]);
+                if (loai == 0){
+                   SuKienHangThang skdk = new SuKienHangThang( tenSK, loaiSK,songay); 
+                   dsSuKien.add(skdk);
+                }
+                else if(loai == 1){
+                    SuKienTheoChuKy skdk = new SuKienTheoChuKy( tenSK, loaiSK, ngayTiepTheo,songay); 
+                    dsSuKien.add(skdk);
+                }
+                else{
+                    System.out.print("error");
+                }
+                
             }
             sc.close();
         } catch (Exception e) {
