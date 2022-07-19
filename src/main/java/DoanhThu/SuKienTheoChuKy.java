@@ -18,8 +18,8 @@ public class SuKienTheoChuKy extends SuKienDinhKy {
         super(ngayBatDau, tenSK, loaiSK);
         this.soNgayMotChuKy = soNgayMotChuKy;
     }
-
-    public void chinhNgay() {
-        this.ngayTiepTheo = this.ngayTiepTheo.plusDays(this.soNgayMotChuKy);
+    
+    public int getSoNgayMotChuKy(){
+        return this.soNgayMotChuKy;
     }
 }

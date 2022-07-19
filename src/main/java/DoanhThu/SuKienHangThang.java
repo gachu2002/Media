@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  *
  * @author XPS
  */
-public class SuKienHangThang extends SuKienDinhKy implements ChinhNgay {
+public class SuKienHangThang extends SuKienDinhKy {
 
     private int ngay;
 
@@ -24,9 +24,5 @@ public class SuKienHangThang extends SuKienDinhKy implements ChinhNgay {
             this.ngayTiepTheo.minusDays(homnay.getDayOfMonth() - ngay);
         }
         this.ngay = ngay;
-    }
-
-    public void chinhNgay() {
-        this.ngayTiepTheo = this.ngayTiepTheo.plusMonths(1);
     }
 }

@@ -40,6 +40,7 @@ public class LichSuView extends javax.swing.JFrame {
         this.dsSuKien = new ArrayList<>();
         model = (DefaultTableModel) jTable3.getModel();
         this.dsSuKien = io.docSKMotLan();
+        qlsk.checkSKDK();
 
         showResultCPNV(this.dsSuKien);
     }

@@ -30,7 +30,11 @@ public class SuKienDinhKy extends SuKien {
         IO.ghiThongBao(dsThongBao);
     }
 
-    public LocalDateTime getNgayTiepTheo(){
+    public LocalDateTime getNgayTiepTheo() {
         return this.ngayTiepTheo;
+    }
+
+    public void setNgayTiepTheo(LocalDateTime t) {
+        this.ngayTiepTheo = t;
     }
 }
