@@ -211,7 +211,6 @@ public class IO {
                     NVPartTime nv = new NVPartTime();
                     nv.setTenNhanVien(sc.nextLine());
                     nv.setThoiGianLamViec(Double.parseDouble(sc.nextLine()));
-                    nv.setLuongTheoGio(Double.parseDouble(sc.nextLine()));
                     list.add(nv);
                 }
 

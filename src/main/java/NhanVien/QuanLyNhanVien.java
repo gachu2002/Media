@@ -1,56 +1,38 @@
+
 package NhanVien;
+import IO.IO;
+import java.util.ArrayList;
 
 public class QuanLyNhanVien {
 
-    private final int MAX_PASTTIME = 15;
+    private final int MAX_PARTTIME = 15;
     private final int MAX_CODINH = 15;
-    private int soNhanVienPastTime;
-    private int soNhanVienCoDinh;
-    NVPartTime[] nvpt;
-    NhanVienCoDinh[] nvcd;
-
-    public QuanLyNhanVien() {
-        soNhanVienPastTime = 0;
-        soNhanVienCoDinh = 0;
+    ArrayList <NhanVien> danhsachNhanViens;
+    public QuanLyNhanVien(){
+       IO IO = new IO();
+       this.danhsachNhanViens = IO.docNV();
     }
-
-    public int getSoNhanVienPastTime() {
-        return soNhanVienPastTime;
+    public int getSoNhanVienPartTime() {
+        int cout = 0;
+        for(NhanVien obj: danhsachNhanViens){
+            if(obj instanceof NVPartTime){
+               cout++;
+            }
+        }
+        return cout;
     }
-
     public int getSoNhanVienCoDinh() {
-        return soNhanVienCoDinh;
+        int cout = 0;
+        return cout;
     }
-
-    public boolean themPastTime(NVPartTime nv) {
-        if (soNhanVienPastTime == MAX_PASTTIME) {
-            System.out.println("Da du nhan vien past-time.");
-            return false;
-        } else {
-            nvpt[soNhanVienPastTime] = nv;
-            soNhanVienPastTime++;
-            return true;
-        }
+    public boolean themNhanVien(NhanVien nv){
+         danhsachNhanViens.add(nv);
+         return true;
     }
-
-    public boolean themCoDinh(NhanVienCoDinh nv) {
-        if (soNhanVienCoDinh == MAX_CODINH) {
-            System.out.println("Da du nhan vien co dinh.");
-            return false;
-        } else {
-            nvcd[soNhanVienCoDinh] = nv;
-            soNhanVienCoDinh++;
-            return true;
-        }
-    }
-
     public double tongLuong() {
         double sum = 0;
-        for (int i = 0; i < soNhanVienCoDinh; i++) {
-            sum += nvcd[i].tinhLuong();
-        }
-        for (int i = 0; i < soNhanVienPastTime; i++) {
-            sum += nvpt[i].tinhLuong();
+        for (NhanVien obj: danhsachNhanViens) {
+            sum += obj.tinhLuong();
         }
         return sum;
     }

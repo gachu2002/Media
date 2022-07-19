@@ -10,6 +10,8 @@ import NhanVien.NhanVien;
 import NhanVien.NhanVienCoDinh;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -64,6 +66,7 @@ public class NhanVienDuc extends javax.swing.JFrame {
         BtnClear = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        Back = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,25 +102,38 @@ public class NhanVienDuc extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
+        Back.setText("Back");
+        Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(LbtenNhanVien1)
-                .addGap(18, 18, 18)
-                .addComponent(TFtenNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(BtnTimKiem)
-                .addGap(18, 18, 18)
-                .addComponent(BtnClear)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(LbtenNhanVien1)
+                        .addGap(18, 18, 18)
+                        .addComponent(TFtenNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(BtnTimKiem)
+                        .addGap(18, 18, 18)
+                        .addComponent(BtnClear)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Back)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(163, 163, 163)
@@ -127,21 +143,24 @@ public class NhanVienDuc extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Back)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LbtenNhanVien1)
                     .addComponent(TFtenNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnTimKiem)
                     .addComponent(BtnClear))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(142, 142, 142)
                     .addComponent(LbtenNhanVien)
-                    .addContainerGap(240, Short.MAX_VALUE)))
+                    .addContainerGap(244, Short.MAX_VALUE)))
         );
 
         pack();
@@ -149,14 +168,24 @@ public class NhanVienDuc extends javax.swing.JFrame {
 
     private void BtnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTimKiemActionPerformed
         // TODO add your handling code here:
+        if(TFtenNhanVien.getText().equals("")){
+           JOptionPane.showMessageDialog(null, "Nhập thông tin tên nhân viên", "Thông báo lỗi", 
+           JOptionPane.ERROR_MESSAGE);
+        }else{
         NhanVien nv = null;
-
+        int cout = 0;
         for (int i = 0; i < list_NhanVien.size(); i++) {
             if (list_NhanVien.get(i).getTenNhanVien().equals(TFtenNhanVien.getText())) {
                 nv = list_NhanVien.get(i);
-                //              list.add(sp);
+                cout++;
+//              list.add(sp);
                 showResultTKNV(nv);
             }
+        }
+        if(cout==0){
+           JOptionPane.showMessageDialog(null, "Không có nhân viên cần tìm!", "Thông báo lỗi", 
+           JOptionPane.ERROR_MESSAGE); 
+        }
         }
     }//GEN-LAST:event_BtnTimKiemActionPerformed
 
@@ -164,21 +193,29 @@ public class NhanVienDuc extends javax.swing.JFrame {
         // TODO add your handling code here:
         String text = "";
         jTextArea1.setText(text);
+        TFtenNhanVien.setText(text);
     }//GEN-LAST:event_BtnClearActionPerformed
+
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+        JFrame MainViews = new MainViews();
+        MainViews.setVisible(true);
+        this.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_BackActionPerformed
 
     private void showResultTKNV(NhanVien nv) {
         String text = "";
         if (nv instanceof NhanVienCoDinh) {
 
-            text += "Nhan vien co dinh:\n";
-            text += "Ho va ten: " + ((NhanVienCoDinh) nv).getTenNhanVien() + "\n";
-            text += "Vi tri: " + ((NhanVienCoDinh) nv).getViTri() + "\n";
-            text += "Luong: " + (int)((NhanVienCoDinh) nv).tinhLuong() + "\n";
+            text += "Nhân viên cố định:\n";
+            text += "Họ và tên: " + ((NhanVienCoDinh) nv).getTenNhanVien() + "\n";
+            text += "Vị trí: " + ((NhanVienCoDinh) nv).getViTri() + "\n";
+            text += "Lương: " + (int)((NhanVienCoDinh) nv).tinhLuong() + "VND\n";
         } else if (nv instanceof NVPartTime) {
-            text += "Nhan vien Past-Time:\n";
-            text += "Ho va ten: " + ((NVPartTime) nv).getTenNhanVien() + "\n";
-            text += "Vi tri: " + ((NVPartTime) nv).getThoiGianLamViec() + "\n";
-            text += "Luong: " + (int)((NVPartTime) nv).tinhLuong() + "\n";
+            text += "Nhân viên Part-Time:\n";
+            text += "Họ và tên: " + ((NVPartTime) nv).getTenNhanVien() + "\n";
+            text += "Thời gian làm việc: " + ((NVPartTime) nv).getThoiGianLamViec()+"h" + "\n";
+            text += "Lương theo giờ: "+((NVPartTime)nv).getLuongTheoGio()+"\n";
+            text += "Lương: " + (int)((NVPartTime) nv).tinhLuong() + "VND\n";
         }
 
         jTextArea1.append(text);
@@ -188,6 +225,7 @@ public class NhanVienDuc extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton Back;
     private javax.swing.JButton BtnClear;
     private javax.swing.JButton BtnTimKiem;
     private javax.swing.JLabel LbtenNhanVien;
