@@ -21,6 +21,7 @@ public class ThemSKML extends javax.swing.JFrame {
 
     public ThemSKML() {
         initComponents();
+        this.setLocationRelativeTo(null); 
     }
 
     /**

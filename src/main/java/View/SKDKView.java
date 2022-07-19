@@ -11,6 +11,7 @@ import DoanhThu.SuKienMotLan;
 import DoanhThu.SuKienTheoChuKy;
 import IO.IO;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,15 +27,21 @@ public class SKDKView extends javax.swing.JFrame {
 
     public SKDKView() {
         initComponents();
+        this.setLocationRelativeTo(null); 
         DefaultTableModel model = (DefaultTableModel) table.getModel();
 
         qlsk = new QuanLySuKien();
+//        System.out.println("1");
         model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
+//        System.out.println("1");
         for (int i = 0; i < qlsk.getDanhSachSuKienDinhKy().size(); i++) {
             SuKienDinhKy sk = qlsk.getDanhSachSuKienDinhKy().get(i);
+//            System.out.println("1");
             if (sk instanceof SuKienHangThang) {
+                System.out.println("1");
                 SuKienHangThang skht = (SuKienHangThang) sk;
+//                System.out.println("1");
                 model.addRow(new Object[]{
                     skht.getTenSuKien(), skht.getNgayTiepTheo().format(DateTimeFormatter.ISO_DATE), skht.getLoaiSuKien(), "", skht.getNgay()
                 });
@@ -67,6 +74,11 @@ public class SKDKView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Back.setText("Trở về");
+        Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackActionPerformed(evt);
+            }
+        });
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,12 +164,20 @@ public class SKDKView extends javax.swing.JFrame {
         ThemSKDK themSKDK = new ThemSKDK();
         this.setVisible(false);
         themSKDK.setVisible(true);
+
     }//GEN-LAST:event_themSKActionPerformed
 
     private void xoaSKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaSKActionPerformed
         // TODO add your handling code here:
-
+        
     }//GEN-LAST:event_xoaSKActionPerformed
+
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+        // TODO add your handling code here:
+        JFrame LichSuview = new LichSuView();
+        this.setVisible(false);
+        LichSuview.setVisible(true);       
+    }//GEN-LAST:event_BackActionPerformed
 
     /**
      * @param args the command line arguments

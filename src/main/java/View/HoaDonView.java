@@ -21,6 +21,7 @@ public class HoaDonView extends javax.swing.JFrame {
     public HoaDonView(HoaDon hd) {
         this.HD = hd;
         initComponents();
+//        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         String text = "";
         for (int i = 0; i < this.HD.getDanhSachSanPham().size(); ++i) {

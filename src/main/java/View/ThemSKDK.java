@@ -22,6 +22,7 @@ public class ThemSKDK extends javax.swing.JFrame {
 
     public ThemSKDK() {
         initComponents();
+        this.setLocationRelativeTo(null); 
     }
 
     /**
