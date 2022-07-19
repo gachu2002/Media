@@ -27,7 +27,7 @@ public class SKDKView extends javax.swing.JFrame {
 
     public SKDKView() {
         initComponents();
-        this.setLocationRelativeTo(null); 
+        this.setLocationRelativeTo(null);
         DefaultTableModel model = (DefaultTableModel) table.getModel();
 
         qlsk = new QuanLySuKien();
@@ -45,10 +45,10 @@ public class SKDKView extends javax.swing.JFrame {
                 model.addRow(new Object[]{
                     skht.getTenSuKien(), skht.getNgayTiepTheo().format(DateTimeFormatter.ISO_DATE), skht.getLoaiSuKien(), "", skht.getNgay()
                 });
-            } else{
+            } else {
                 SuKienTheoChuKy sktck = (SuKienTheoChuKy) sk;
                 model.addRow(new Object[]{
-                    sktck.getTenSuKien(), sktck.getNgayTiepTheo().format(DateTimeFormatter.ISO_DATE), sktck.getLoaiSuKien(), sktck.getSoNgayMotChuKy(),""
+                    sktck.getTenSuKien(), sktck.getNgayTiepTheo().format(DateTimeFormatter.ISO_DATE), sktck.getLoaiSuKien(), sktck.getSoNgayMotChuKy(), ""
                 });
             }
         }
@@ -68,7 +68,6 @@ public class SKDKView extends javax.swing.JFrame {
         table = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         themSK = new javax.swing.JButton();
-        suaSK = new javax.swing.JButton();
         xoaSK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -110,8 +109,6 @@ public class SKDKView extends javax.swing.JFrame {
             }
         });
 
-        suaSK.setText("Sửa sự kiện");
-
         xoaSK.setText("Xóa sự kiện");
         xoaSK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,19 +122,21 @@ public class SKDKView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Back)
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel1)))
+                        .addContainerGap(16, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
                         .addComponent(themSK)
-                        .addGap(45, 45, 45)
-                        .addComponent(suaSK)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(xoaSK))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Back)
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel1)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addComponent(xoaSK)
+                        .addGap(65, 65, 65))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +150,6 @@ public class SKDKView extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(themSK)
-                    .addComponent(suaSK)
                     .addComponent(xoaSK))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -169,14 +167,16 @@ public class SKDKView extends javax.swing.JFrame {
 
     private void xoaSKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaSKActionPerformed
         // TODO add your handling code here:
-        
+        XoaSKDKView xoaskdkView = new XoaSKDKView();
+        this.setVisible(false);
+        xoaskdkView.setVisible(true);
     }//GEN-LAST:event_xoaSKActionPerformed
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         // TODO add your handling code here:
         JFrame LichSuview = new LichSuView();
         this.setVisible(false);
-        LichSuview.setVisible(true);       
+        LichSuview.setVisible(true);
     }//GEN-LAST:event_BackActionPerformed
 
     /**
@@ -187,7 +187,6 @@ public class SKDKView extends javax.swing.JFrame {
     private javax.swing.JButton Back;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton suaSK;
     private javax.swing.JTable table;
     private javax.swing.JButton themSK;
     private javax.swing.JButton xoaSK;

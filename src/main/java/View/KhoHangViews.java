@@ -8,6 +8,7 @@ import KhoHang.SanPham;
 import DoanhThu.SuKien;
 import DoanhThu.SuKienMotLan;
 import java.awt.BorderLayout;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JFrame;
@@ -397,7 +398,7 @@ public class KhoHangViews extends javax.swing.JFrame {
         for (int i = 0; i < listSanPham.size(); i++) {
             if (listSanPham.get(i).getTensanpham().equals(TFTen.getText())) {
                 sp = listSanPham.get(i);
-                sp.setSoLuong(sp.getSoluong()+Integer.parseInt(TFSoLuongNhap.getText()));
+                sp.setSoLuong(sp.getSoluong() + Integer.parseInt(TFSoLuongNhap.getText()));
                 key = 1;
                 break;
             }
@@ -444,6 +445,7 @@ public class KhoHangViews extends javax.swing.JFrame {
 //        listSanPham_SuKien.add(sk);
         showResult(); /// Bảng hiện thêm hàng do hàm showResult này còn danh sách listSanPham vẫn chỉ có các sản phẩm ko cùng tên
         io.ghiSP(listSanPham);
+        listSanPham_SuKien.add(new SuKienMotLan(LocalDateTime.now(), "Nhập " + sp.getTensanpham(), "Mua", sp.getGianhap() * sp.getSoluong()));
         io.ghiSKMotLan(listSanPham_SuKien);
 
     }//GEN-LAST:event_BtnInsertActionPerformed

@@ -4,7 +4,6 @@
  */
 package ThanhToan;
 
-import DoanhThu.SuKien;
 import DoanhThu.SuKienMotLan;
 import Exception.*;
 import IO.IO;
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 public class ChucNangThanhToan {
 
     private HoaDon HD;
-// thêm âm sản phẩm: báo lỗi
 
     public ChucNangThanhToan() {
         this.HD = new HoaDon();
@@ -140,7 +138,6 @@ public class ChucNangThanhToan {
 
     public void huy() {
         ArrayList<String> dsSanPham = this.HD.getDanhSachSanPham();
-        ArrayList<Double> dsGia = this.HD.getDanhSachGia();
         ArrayList<Integer> dsSoLuong = this.HD.getDanhSachSoLuong();
         IO io = new IO();
         ArrayList<SanPham> list_kho = io.docSP();
@@ -160,5 +157,4 @@ public class ChucNangThanhToan {
     public HoaDon getHD() {
         return this.HD;
     }
-
 }

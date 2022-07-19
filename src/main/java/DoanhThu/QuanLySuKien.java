@@ -92,6 +92,18 @@ public class QuanLySuKien {
         io.ghiSKDinhKy(this.dsSKDK);
     }
 
+    public void xoaSKDK(String tenSK) {
+        for (int i = 0; i < this.dsSKDK.size(); ++i) {
+            SuKienDinhKy skdk = this.dsSKDK.get(i);
+            if (skdk.getTenSuKien().equals(tenSK)) {
+                this.dsSKDK.remove(i);
+                break;
+            }
+        }
+        IO io = new IO();
+        io.ghiSKDinhKy(dsSKDK);
+    }
+
     public ArrayList<SuKienMotLan> getDanhSachSuKienMotLan() {
         return this.dsSKML;
     }
@@ -107,5 +119,4 @@ public class QuanLySuKien {
     public void setDanhSachSuKienDinhKy(ArrayList<SuKienDinhKy> s) {
         this.dsSKDK = s;
     }
-
 }
