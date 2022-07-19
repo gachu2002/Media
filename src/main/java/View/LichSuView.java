@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -42,16 +43,16 @@ public class LichSuView extends javax.swing.JFrame {
         this.dsSuKien = io.docSKMotLan();
         qlsk.checkSKDK();
 
-        showResultCPNV(this.dsSuKien);
+        showResultLS(this.dsSuKien);
     }
 
-    private void showResultCPNV(ArrayList<SuKienMotLan> dssk) {
+    private void showResultLS(ArrayList<SuKienMotLan> dssk) {
         model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
         for (int i = 0; i < dssk.size(); i++) {
             SuKienMotLan sk = dssk.get(i);
             model.addRow(new Object[]{
-                sk.getDate().format(DateTimeFormatter.ISO_DATE), sk.getLoaiSuKien(), sk.getGiatri()
+                sk.getTenSuKien(), sk.getDate().format(DateTimeFormatter.ISO_DATE), sk.getLoaiSuKien(), sk.getGiatri()
             });
         }
         jLabel8.setText("Doanh thu: " + this.qlsk.getDoanhThu(this.start, this.end));
@@ -89,6 +90,8 @@ public class LichSuView extends javax.swing.JFrame {
         jTable3 = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        themSK = new javax.swing.JButton();
+        viewSKDK = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -159,14 +162,36 @@ public class LichSuView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Ngày", "Loại", "Giá trị"
+                "Tên", "Ngày", "Loại", "Giá trị"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(jTable3);
 
         jLabel8.setText(" ");
 
         jLabel9.setText("jLabel9");
+
+        themSK.setText("Thêm sự kiện");
+        themSK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                themSKActionPerformed(evt);
+            }
+        });
+
+        viewSKDK.setText("Xem danh sách sự kiện định kỳ");
+        viewSKDK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewSKDKActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,19 +202,21 @@ public class LichSuView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(Back)
-                            .addComponent(thongKeButton))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(124, 124, 124)
+                                .addComponent(Back)
+                                .addGap(245, 245, 245)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 58, Short.MAX_VALUE))
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(themSK)
+                                    .addComponent(viewSKDK)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 6, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -217,6 +244,8 @@ public class LichSuView extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(namBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(91, 91, 91)
+                        .addComponent(thongKeButton)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -226,32 +255,39 @@ public class LichSuView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Back)
-                        .addGap(89, 89, 89)
+                        .addGap(67, 67, 67)
                         .addComponent(jLabel1)
-                        .addGap(79, 79, 79)
-                        .addComponent(thongKeButton))
+                        .addGap(18, 18, 18)
+                        .addComponent(themSK)
+                        .addGap(18, 18, 18)
+                        .addComponent(viewSKDK))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8)))
                 .addGap(16, 16, 16)
                 .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(ngayBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(thangBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(namBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(ngayKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(thangKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(namKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(ngayBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(thangBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(namBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(ngayKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(thangKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addComponent(namKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(thongKeButton)))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
@@ -260,21 +296,30 @@ public class LichSuView extends javax.swing.JFrame {
 
     private void thongKeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thongKeButtonActionPerformed
         // TODO add your handling code here:
-        int startDay = Integer.parseInt(ngayBatDau.getText());
-        int startMonth = Integer.parseInt(thangBatDau.getText());
-        int startYear = Integer.parseInt(namBatDau.getText());
-        int endDay = Integer.parseInt(ngayKetThuc.getText());
-        int endMonth = Integer.parseInt(thangKetThuc.getText());
-        int endYear = Integer.parseInt(namKetThuc.getText());
+        try {
+            int startDay = Integer.parseInt(ngayBatDau.getText());
+            int startMonth = Integer.parseInt(thangBatDau.getText());
+            int startYear = Integer.parseInt(namBatDau.getText());
+            int endDay = Integer.parseInt(ngayKetThuc.getText());
+            int endMonth = Integer.parseInt(thangKetThuc.getText());
+            int endYear = Integer.parseInt(namKetThuc.getText());
 
-        this.start = LocalDateTime.of(startYear, startMonth, startDay, 0, 0, 0);
-        this.end = LocalDateTime.of(endYear, endMonth, endDay, 23, 59, 59);
+            this.start = LocalDateTime.of(startYear, startMonth, startDay, 0, 0, 0);
+            this.end = LocalDateTime.of(endYear, endMonth, endDay, 23, 59, 59);
 
 //        System.out.println(start);
 //        System.out.println(end);
-        ArrayList<SuKienMotLan> dssk = this.qlsk.getThongKeSuKien(this.start, this.end);
+            ArrayList<SuKienMotLan> dssk = this.qlsk.getThongKeSuKien(this.start, this.end);
 //        System.out.println(dssk.size());
-        showResultCPNV(dssk);
+            showResultLS(dssk);
+        } catch (Exception e) {
+            System.out.println(e.getClass());
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,
+                    "Xảy ra lỗi!",
+                    "",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_thongKeButtonActionPerformed
 
     private void ngayBatDauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ngayBatDauActionPerformed
@@ -299,6 +344,20 @@ public class LichSuView extends javax.swing.JFrame {
         this.setVisible(false);
         MainViews.setVisible(true);
     }//GEN-LAST:event_BackActionPerformed
+
+    private void themSKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themSKActionPerformed
+        // TODO add your handling code here:
+        ThemSKML tsk = new ThemSKML();
+        this.setVisible(false);
+        tsk.setVisible(true);
+    }//GEN-LAST:event_themSKActionPerformed
+
+    private void viewSKDKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSKDKActionPerformed
+        // TODO add your handling code here:
+        SKDKView skdkView = new SKDKView();
+        this.setVisible(false);
+        skdkView.setVisible(true);
+    }//GEN-LAST:event_viewSKDKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,6 +384,8 @@ public class LichSuView extends javax.swing.JFrame {
     private javax.swing.JTextField ngayKetThuc;
     private javax.swing.JTextField thangBatDau;
     private javax.swing.JTextField thangKetThuc;
+    private javax.swing.JButton themSK;
     private javax.swing.JButton thongKeButton;
+    private javax.swing.JButton viewSKDK;
     // End of variables declaration//GEN-END:variables
 }

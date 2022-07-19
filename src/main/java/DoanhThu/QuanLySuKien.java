@@ -15,18 +15,18 @@ import java.util.ArrayList;
  */
 public class QuanLySuKien {
 
-    private ArrayList<SuKienMotLan> dsSuKien;
+    private ArrayList<SuKienMotLan> dsSKML;
     private ArrayList<SuKienDinhKy> dsSKDK;
 
     public QuanLySuKien() {
         IO IO = new IO();
-        this.dsSuKien = IO.docSKMotLan();
+        this.dsSKML = IO.docSKMotLan();
         this.dsSKDK = IO.docSKDinhKy();
     }
 
     public ArrayList<SuKienMotLan> getThongKeSuKien(LocalDateTime start, LocalDateTime end) {
         ArrayList<SuKienMotLan> dsThongKeSuKien = new ArrayList<>();
-        for (SuKienMotLan obj : dsSuKien) {
+        for (SuKienMotLan obj : dsSKML) {
             if ((obj.getDate()).compareTo(start) >= 0 && (obj.getDate()).compareTo(end) < 0) {
                 dsThongKeSuKien.add(obj);
             }
@@ -80,12 +80,32 @@ public class QuanLySuKien {
         return doanhthu;
     }
 
-    public ArrayList<SuKienMotLan> getDanhSachSuKien() {
-        return this.dsSuKien;
+    public void themSKML(SuKienMotLan skml) {
+        this.dsSKML.add(skml);
+        IO io = new IO();
+        io.ghiSKMotLan(this.dsSKML);
     }
 
-    public void setDanhSachSuKien(ArrayList<SuKienMotLan> s) {
-        this.dsSuKien = s;
+    public void themSKDK(SuKienDinhKy skdk) {
+        this.dsSKDK.add(skdk);
+        IO io = new IO();
+        io.ghiSKDinhKy(this.dsSKDK);
+    }
+
+    public ArrayList<SuKienMotLan> getDanhSachSuKienMotLan() {
+        return this.dsSKML;
+    }
+
+    public void setDanhSachSuKienMotLan(ArrayList<SuKienMotLan> s) {
+        this.dsSKML = s;
+    }
+
+    public ArrayList<SuKienDinhKy> getDanhSachSuKienDinhKy() {
+        return this.dsSKDK;
+    }
+
+    public void setDanhSachSuKienDinhKy(ArrayList<SuKienDinhKy> s) {
+        this.dsSKDK = s;
     }
 
 }

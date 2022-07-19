@@ -25,4 +25,8 @@ public class SuKienHangThang extends SuKienDinhKy {
         }
         this.ngay = ngay;
     }
+    
+    public int getNgay(){
+        return this.ngay;
+    }
 }

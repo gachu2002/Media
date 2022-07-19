@@ -4,30 +4,6 @@ import KhoHang.SanPham;
 
 import java.util.Date;
 
-/*
-TODO1: sửa các lớp SuKien và một số lớp liên quan
-    - Thêm 2 class SuKienMotLan và SuKienDinhKy
-    - SuKien:
-        + String tenSuKien;
-        + String loaiSuKien; 
-    - SuKienMotLan extends SuKien:
-        + int giaTri; (>0 nếu thu được tiền, <0 nếu phải trả tiền)
-        + Date ngay;
-    - SuKienDinhKy extends SuKien:
-        + Date ngayTiepTheo;
-        + void themThongBao(); 
-            // thêm thông báo để nhắc nhở ng dùng thêm sự kiện một lần khi đến ngày
-        + abstract void chinhNgay(); 
-            // sửa Date ngayTiepTheo khi đến ngày
-    - SuKienHangThang extends SuKienDinhKy:
-        + int ngayTrongThang;
-    - SuKienTheoChuKy extends SuKienDinhKy:
-        + int soNgayMotChuKy;
-TODO2: Thống nhất với class ChiPhi và NhanVien
-TODO3: sửa các file .DAT thành .csv (chưa cần lắm)
-TODO4: chia rõ các class Quản lý với các class View (?)
-TODO5: NhanVien: ArrayList<NhanVien>, them, xoa, ...
- */
 public class SuKien {
 
     private String tenSuKien;
