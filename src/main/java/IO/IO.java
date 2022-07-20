@@ -246,10 +246,12 @@ public class IO {
         ArrayList<ThongBao> dsThongBao = new ArrayList<>();
         try ( Scanner sc = new Scanner(new File("src\\main\\java\\IO\\dsThongBao.csv"))) {
             sc.useDelimiter("\n");
+            boolean a;
             while (sc.hasNext()) {
                 String nextLine = sc.next();
                 String cacTruong[] = nextLine.split(",");
-                dsThongBao.add(new ThongBao(cacTruong[0], (cacTruong[1].substring(0, 4).equals("true"))));
+                if(cacTruong[1].toLowerCase().contains("true")){a=true;}else{a=false;}
+                dsThongBao.add(new ThongBao(cacTruong[0], a));
             }
             sc.close();
 
