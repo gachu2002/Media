@@ -38,13 +38,13 @@ public class MainViews extends javax.swing.JFrame {
         BtnKhoHang = new javax.swing.JButton();
         BtnHoaDon = new javax.swing.JButton();
         BtnChiPhi = new javax.swing.JButton();
-        BtnNhanVien = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tieudemain.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tieudemain.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tieudemain.setText("Hệ thống quản lý cửa hàng MediaOne");
+        tieudemain.setText("TÔI CÓ THỂ GIÚP GÌ CHO BẠN");
         tieudemain.setAlignmentX(0.5F);
 
         BtnKhoHang.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -74,12 +74,10 @@ public class MainViews extends javax.swing.JFrame {
             }
         });
 
-        BtnNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        BtnNhanVien.setForeground(new java.awt.Color(153, 153, 0));
-        BtnNhanVien.setText("QUẢN LÝ NHÂN VIÊN");
-        BtnNhanVien.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Bell-icon.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnNhanVienActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -89,28 +87,29 @@ public class MainViews extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(230, 230, 230)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tieudemain, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addComponent(BtnKhoHang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnHoaDon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnChiPhi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(248, 248, 248))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tieudemain, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnKhoHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnChiPhi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(tieudemain, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(BtnKhoHang, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                .addGap(27, 27, 27)
-                .addComponent(BtnHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(tieudemain, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addComponent(BtnChiPhi, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                .addComponent(BtnKhoHang, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                 .addGap(41, 41, 41)
-                .addComponent(BtnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                .addGap(38, 38, 38))
+                .addComponent(BtnHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addGap(51, 51, 51)
+                .addComponent(BtnChiPhi, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addGap(180, 180, 180))
         );
 
         tieudemain.getAccessibleContext().setAccessibleDescription("");
@@ -151,6 +150,13 @@ public class MainViews extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BtnNhanVienActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JFrame ThongBao1 = new ThongBaoView();
+        ThongBao1.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -159,7 +165,7 @@ public class MainViews extends javax.swing.JFrame {
     private javax.swing.JButton BtnChiPhi;
     private javax.swing.JButton BtnHoaDon;
     private javax.swing.JButton BtnKhoHang;
-    private javax.swing.JButton BtnNhanVien;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel tieudemain;
     // End of variables declaration//GEN-END:variables
 }
